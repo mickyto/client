@@ -22,7 +22,7 @@ const productSchema = new Schema({
 	images: Array
 });
 
-const vendorSchema = new Schema({
+export const vendorSchema = new Schema({
 	_id: ObjectId,
 	name: String,
 	logotype: String
@@ -55,29 +55,6 @@ export const vendorModel = mongoose.model('Vendor', vendorSchema, 'vendor');
 export const unitModel = mongoose.model('Unit', unitSchema, 'unit');
 export const propertyModel = mongoose.model('Property', propertySchema, 'property');
 export const eventModel = mongoose.model('Event', eventSchema, 'event');
-
-
-
-export function getVendor(id) {
-
-	vendorModel.findById(id, (err, vendor) => {
-		if (err) throw(err);
-		else return vendor;
-	});
-}
-
-export function getVendors() {
-
-    return vendorModel.find().stream();
-    
-}
-
-export class Vendor {}
-
-const vendor = new Vendor();
-vendor.id = new ObjectId('568026f4bcbe8cf70a000061');
-vendor.name = 'Anonymous';
-
 
 
 

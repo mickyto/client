@@ -22,7 +22,7 @@ import {
 
 import {
     vendorModel,
-    Vendor
+    vendorSchema
 } from './mongooseModels';
 
 
@@ -41,7 +41,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
         }
     },
     (obj) => {
-        if (obj instanceof Vendor) {
+        if (obj instanceof vendorSchema) {
             return VendorType;
         }
         else {

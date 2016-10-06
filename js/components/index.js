@@ -1,9 +1,6 @@
 import chalk from 'chalk';
 import React from 'react';
 import Relay from 'react-relay';
-//import StarWarsShip from './StarWarsShip';
-//import AddShipMutation from '../mutation/AddShipMutation';
-
 
 class StarWarsApp extends React.Component {
 

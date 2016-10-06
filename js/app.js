@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
-import StarWarsApp from './components/StarWarsApp';
-import StarWarsAppHomeRoute from './routes/StarWarsAppHomeRoute';
+import index from './components/index';
+import indexRoute from './routes/indexRoute';
 
 ReactDOM.render(
   <Relay.RootContainer
-    Component={StarWarsApp}
-    route={new StarWarsAppHomeRoute()}
+    Component={index}
+    route={new indexRoute()}
   />,
   document.getElementById('root')
 );

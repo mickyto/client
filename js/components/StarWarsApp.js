@@ -8,12 +8,11 @@ import Relay from 'react-relay';
 class StarWarsApp extends React.Component {
 
     render() {
-        const {vendors} = this.props;
-        console.log(typeof vendors);
+        const { vendors } = this.props.viewer;
         return (
             <div>
                 {vendors.map(vendor => (
-                    <li key={vendor.id}>
+                    <li key={vendor.__dataID__}>
                         <h1>{vendor.vendorId}</h1>
                         <h1>{vendor.name}</h1>
                         <h1>{vendor.logotype}</h1>
@@ -26,12 +25,13 @@ class StarWarsApp extends React.Component {
 
 export default Relay.createContainer(StarWarsApp, {
     fragments: {
-        vendors: () => Relay.QL`
-            fragment on Vendor @relay(plural: true) {
-                id,
-                vendorId,
-                name,
-                logotype
+        viewer: () => Relay.QL`
+            fragment on Vendors {
+                vendors {
+                    vendorId
+                    name
+                    logotype
+                }
             }
         `,
     }

@@ -71,24 +71,32 @@ const VendorType = new GraphQLObjectType({
     interfaces: [nodeInterface]
 });
 
-const queryType = new GraphQLObjectType({
-    name: 'Query',
+
+const getVendors = new GraphQLObjectType({
+    name: 'Vendors',
     fields: () => ({
         vendors: {
             type: new GraphQLList(VendorType),
-            args: {
-                names: {
-                    type: new GraphQLList(GraphQLString),
-                }
-            },
-            resolve: (root, {name}) => {
+            resolve: () => {
                 return new Promise((resolve, reject) => {
-
-                    vendorModel.find({name: name}, (err, vendors) => {
+                    vendorModel.find((err, vendors) => {
                         if (err) reject(err);
                         else resolve(vendors);
                     });
                 });
+            }
+        },
+        node: nodeField
+    })
+});
+
+const queryType = new GraphQLObjectType({
+    name: 'Query',
+    fields: () => ({
+        viewer: {
+            type: getVendors,
+            resolve: () => {
+                return ''
             }
         },
         node: nodeField

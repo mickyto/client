@@ -7,9 +7,7 @@ import StarWarsAppHomeRoute from './routes/StarWarsAppHomeRoute';
 ReactDOM.render(
   <Relay.RootContainer
     Component={StarWarsApp}
-    route={new StarWarsAppHomeRoute({
-    vendorNames: ['DeWalt', 'Makita']
-    })}
+    route={new StarWarsAppHomeRoute()}
   />,
   document.getElementById('root')
 );

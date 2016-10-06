@@ -1,4 +1,3 @@
-
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';

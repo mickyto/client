@@ -31,7 +31,12 @@ module.exports = {
     postcss: () => [precss, autoprefixer],
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    externals: {
+        'Config': JSON.stringify({
+            imageServer: 'http://im.skukit-st.com/'
+        })
+    }
 };
 
 

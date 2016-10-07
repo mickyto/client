@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 
 import Header from '../header/header';
+import Categories from '../categories/categories';
 import Stylus from './index.scss';
 import Config from 'Config'
 
@@ -13,10 +14,11 @@ class index extends React.Component {
     }
 
     render() {
-        const { vendors } = this.props.viewer;
+        const { vendors } = this.props.Vendor;
         return (
             <div>
                 <Header />
+                <Categories categories={this.props.Category} />
                 <div className={Stylus.root}>
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
@@ -33,12 +35,20 @@ class index extends React.Component {
 
 export default Relay.createContainer(index, {
     fragments: {
-        viewer: () => Relay.QL`
+        Vendor: () => Relay.QL`
             fragment on Vendors {
                 vendors {
                     vendorId
                     name
                     logotype
+                }
+            }
+        `,
+        Category: () => Relay.QL`
+            fragment on Categories {
+                categories {
+                    categoryId
+                    name
                 }
             }
         `,

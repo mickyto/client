@@ -1,12 +1,12 @@
 import React from 'react';
-//import stylus from './header.scss';
+import Stylus from './category.scss';
 
 class Categories extends React.Component {
 
     render() {
         const { categories } = this.props.categories;
         return (
-            <div>
+            <div className={Stylus.root}>
                 {categories.map(category => (
                     <li key={category.__dataID__}>
                         <a href={category.vendorId}>{category.name}</a>

@@ -3,7 +3,7 @@ import Relay from 'react-relay';
 
 import Header from '../header/header';
 import Categories from '../categories/categories';
-import Stylus from './index.scss';
+import Style from './index.scss';
 import Config from 'Config'
 
 class index extends React.Component {
@@ -19,7 +19,7 @@ class index extends React.Component {
             <div>
                 <Header />
                 <Categories categories={this.props.Category} />
-                <div className={Stylus.root}>
+                <div className={Style.root}>
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
                             <a href={vendor.vendorId}>{vendor.name}</a>
@@ -49,6 +49,7 @@ export default Relay.createContainer(index, {
                 categories {
                     categoryId
                     name
+                    ico
                 }
             }
         `,

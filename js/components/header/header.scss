@@ -3,7 +3,17 @@
 .root {
   background-color: $black-light !important;
   justify-content: center !important;
-  padding: 30px 16px !important;
+  padding: 20px 16px !important;
+
+  ul {
+    text-align: right
+  }
+
+  li {
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+  }
 
   a {
     color: $white;

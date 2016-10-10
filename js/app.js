@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
-import { browserHistory, applyRouterMiddleware, Router } from 'react-router';
+import { hashHistory, applyRouterMiddleware, Router, Route } from 'react-router';
 import useRelay from 'react-router-relay';
-import Route from './routes/Route';
+
+import Query from './routes/Query';
+import index from './components/index/index';
+import catalog from './components/catalog/catalog';
 
 
 ReactDOM.render(
-    <Router history={browserHistory} routes={Route} render={applyRouterMiddleware(useRelay)} environment={Relay.Store} />,
+    <Router history={hashHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
+        <Route path="/" component={index} queries={Query.index} />
+        <Route path="/catalog" component={catalog} queries={Query.catalog} />
+    </Router>,
     document.getElementById('root')
 );
 

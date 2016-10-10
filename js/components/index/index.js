@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Link } from 'react-router'
 
 import Header from '../header/header';
 import Categories from '../categories/categories';
@@ -22,9 +23,8 @@ class index extends React.Component {
                 <div className={Style.root}>
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
-                            <a href={vendor.vendorId}>{vendor.name}</a>
+                            <Link to={vendor.vendorId}>{vendor.name}</Link>
                             <img src={this.handleImage(vendor.logotype)} />
-
                         </li>
                     ))}
                 </div>

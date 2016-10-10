@@ -331,6 +331,22 @@ const queryType = new GraphQLObjectType({
                 return ''
             }
         },
+        category: {
+            type: CategoryType,
+            args: {
+                id: {
+                    type: new GraphQLNonNull(GraphQLID)
+                }
+            },
+            resolve(parent, { id }) {
+                return new Promise((resolve, reject) => {
+                    categoryModel.findById(id, (err, category) => {
+                        if (err) reject(err);
+                        else resolve(category);
+                    });
+                });
+            }
+        },
         node: nodeField
     })
 });

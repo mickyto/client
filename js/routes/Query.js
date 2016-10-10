@@ -9,5 +9,10 @@ export default {
 
     catalog: {
         Categories: () => Relay.QL`query { categoryViewer }`
+    },
+    
+    category: {
+        Category: () => Relay.QL`query { category (id: $id) }`
     }
+    
 };

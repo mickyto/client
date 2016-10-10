@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import NavLink from '../NavLink'
 import stylus from './header.scss';
 
 class Header extends React.Component {
@@ -7,8 +7,8 @@ class Header extends React.Component {
 		return (
 			<header className={stylus.root}>
 				<ul role="nav">
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/catalog">Catalog</Link></li>
+					<li><NavLink to="/">Home</NavLink></li>
+					<li><NavLink to="/catalog">Catalog</NavLink></li>
 				</ul>
 			</header>
 		)

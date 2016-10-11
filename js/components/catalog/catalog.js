@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Link } from 'react-router'
 
 import Header from '../header/header';
 import Style from './catalog.scss';
@@ -19,7 +20,7 @@ class catalog extends React.Component {
                 <div className={Style.root}>
                     {categories.map(category => (
                         <li key={category.__dataID__}>
-                            <a href={category.categoryId}>{category.name}</a>
+                            <Link to={'/category/' + category.categoryId}>{category.name}</Link>
                             <img src={this.handleImage(category.ico)} />
                         </li>
                     ))}

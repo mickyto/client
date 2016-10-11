@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import chalk from 'chalk';
-mongoose.connect('mongodb://localhost:27017/content');
+mongoose.connect('mongodb://mongo:27017/content');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 

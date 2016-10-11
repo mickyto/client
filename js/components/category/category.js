@@ -15,7 +15,6 @@ class category extends React.Component {
 
     render() {
         const category = this.props.Category;
-        console.log(category);
         return (
             <div>
                 <Header />

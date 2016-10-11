@@ -366,6 +366,22 @@ const queryType = new GraphQLObjectType({
                 });
             }
         },
+        vendor: {
+            type: VendorType,
+            args: {
+                id: {
+                    type: new GraphQLNonNull(GraphQLID)
+                }
+            },
+            resolve(parent, { id }) {
+                return new Promise((resolve, reject) => {
+                    vendorModel.findById(id, (err, vendor) => {
+                        if (err) reject(err);
+                        else resolve(vendor);
+                    });
+                });
+            }
+        },
         node: nodeField
     })
 });

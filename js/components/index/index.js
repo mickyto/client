@@ -23,7 +23,7 @@ class index extends React.Component {
                 <div className={Style.root}>
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
-                            <Link to={vendor.vendorId}>{vendor.name}</Link>
+                            <Link to={'/vendor/' + vendor.vendorId}>{vendor.name}</Link>
                             <img src={this.handleImage(vendor.logotype)} />
                         </li>
                     ))}

@@ -13,6 +13,10 @@ export default {
     
     category: {
         Category: () => Relay.QL`query { category (id: $id) }`
+    },
+    
+    vendor: {
+        Vendor: () => Relay.QL`query { vendor (id: $id) }`
     }
     
 };

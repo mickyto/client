@@ -8,13 +8,15 @@ import Query from './routes/Query';
 import index from './components/index/index';
 import Catalog from './components/catalog/catalog';
 import Category from './components/category/category';
+import Vendor from './components/vendor/vendor';
 
 
 ReactDOM.render(
     <Router history={hashHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
         <Route path="/" component={index} queries={Query.index} />
         <Route path="/catalog" component={Catalog} queries={Query.catalog} />
-        <Route path="/categories/:id" component={Category} queries={Query.category} />
+        <Route path="/category/:id" component={Category} queries={Query.category} />
+        <Route path="/vendor/:id" component={Vendor} queries={Query.vendor} />
     </Router>,
     document.getElementById('root')
 );

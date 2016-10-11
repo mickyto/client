@@ -24,6 +24,7 @@ class category extends React.Component {
                     {category.products.map(product => (
                         <li key={product.__dataID__}>
                             <Link to={product.productId}>{product.vendor.name + " " + product.model}</Link>
+                            <img src={this.handleImage(product.front_image.src)} />
                         </li>
                     ))}
                 </div>
@@ -31,7 +32,7 @@ class category extends React.Component {
         )
     }
 }
-//<img src={this.handleImage(product.front_image)} />
+
 
 export default Relay.createContainer(category, {
     fragments: {
@@ -43,6 +44,9 @@ export default Relay.createContainer(category, {
                     model
                     vendor {
                         name
+                    }
+                    front_image {
+                        src
                     }
                 }
             }

@@ -8,7 +8,7 @@ import {
     GraphQLNonNull
 } from 'graphql';
 
-//import chalk from 'chalk';
+import chalk from 'chalk';
 import {
     connectionArgs,
     connectionDefinitions,
@@ -26,8 +26,9 @@ import {
     categoryModel,
     productModel,
     unitModel,
-    propertyModel
-
+    propertyModel,
+    eventModel,
+    mapReduceObject
 } from './mongooseModels';
 
 
@@ -287,9 +288,25 @@ const CategoryType = new GraphQLObjectType({
             resolve(category) {
                 return new Promise((resolve, reject) => {
                     productModel.find({ category_id: category._id }, (err, products) => {
+                        
+                        if (err) reject(err);
 
-                        resolve(products);
+                        if (products.length < 1) {
+                            resolve(products);
+                        }
 
+                        for (var t in products) {
+
+                            eventModel.mapReduce(mapReduceObject(products[t]._id), (err, result) => {
+
+                                if (err) reject(err);
+
+                                for (var i in result) {
+                                    products[t][result[i]._id] = result[i].value[result[i]._id];
+                                }
+                                resolve(products);
+                            });
+                        }
                     });
                 });
             }
@@ -297,6 +314,8 @@ const CategoryType = new GraphQLObjectType({
     },
     interfaces: [nodeInterface]
 });
+
+
 
 const getCategories = new GraphQLObjectType({
     name: 'Categories',

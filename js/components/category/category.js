@@ -22,7 +22,7 @@ class category extends React.Component {
                     <h2>{category.name}</h2>
                     {category.products.map(product => (
                         <li key={product.__dataID__}>
-                            <Link to={product.productId}>{product.vendor.name + " " + product.model}</Link>
+                            <Link to={'/product/' + product.productId}>{product.vendor.name + " " + product.model}</Link>
                             <img src={this.handleImage(product.front_image.src)} />
                         </li>
                     ))}

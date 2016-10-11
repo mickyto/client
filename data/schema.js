@@ -20,6 +20,8 @@ import {
     nodeDefinitions,
 } from 'graphql-relay';
 
+
+
 import {
     vendorModel,
     vendorSchema,
@@ -35,20 +37,29 @@ import {
 const {nodeInterface, nodeField} = nodeDefinitions(
     globalId => {
         const {type, id} = fromGlobalId(globalId);
+        console.log(id);
+        console.log(type);
         if (type === 'Vendor') {
-            return new Promise((resolve, reject) => {
+
                 vendorModel.findById(id, (err, vendor) => {
                     if (err) reject(err);
-                    else resolve(vendor);
-                });
-            });
+                    return vendor;
+                })
+            
         } else if (type === 'Category') {
             return new Promise((resolve, reject) => {
                 categoryModel.findById(id, (err, category) => {
                     if (err) reject(err);
                     else resolve(category);
                 });
-            });
+            })
+        } else if (type === 'ProductType') {
+            return new Promise((resolve, reject) => {
+                productModel.findById(id, (err, product) => {
+                    if (err) reject(err);
+                    else resolve(product);
+                });
+            })
         } else {
             return null;
         }
@@ -198,7 +209,7 @@ const SpecificationType = new GraphQLObjectType({
             }
         }
     },
-    interfaces: [nodeInterface],
+    interfaces: [nodeInterface]
 });
 
 const FrontImageType = new GraphQLObjectType({
@@ -260,6 +271,7 @@ const ProductType = new GraphQLObjectType({
         specifications: {
             type: new GraphQLList(SpecificationType),
             resolve({specifications}) {
+                
                 return specifications;
             }
         }
@@ -378,6 +390,33 @@ const queryType = new GraphQLObjectType({
                     vendorModel.findById(id, (err, vendor) => {
                         if (err) reject(err);
                         else resolve(vendor);
+                    });
+                });
+            }
+        },
+        product: {
+            type: ProductType,
+            args: {
+                id: {
+                    type: new GraphQLNonNull(GraphQLID)
+                }
+            },
+            resolve(parent, { id }) {
+                return new Promise((resolve, reject) => {
+                    productModel.findById(id, (err, product) => {
+                        if (err) reject(err);
+
+                        eventModel.mapReduce(mapReduceObject(product._id), (err, result) => {
+
+                            //console.log(chalk.red(result));
+                            if (err) reject(err);
+
+                            for (var i in result) {
+                                product[result[i]._id] = result[i].value[result[i]._id];
+                            }
+
+                            resolve(product);
+                        });
                     });
                 });
             }

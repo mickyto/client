@@ -9,6 +9,7 @@ import index from './components/index/index';
 import Catalog from './components/catalog/catalog';
 import Category from './components/category/category';
 import Vendor from './components/vendor/vendor';
+import Product from './components/product/product';
 
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path="/catalog" component={Catalog} queries={Query.catalog} />
         <Route path="/category/:id" component={Category} queries={Query.category} />
         <Route path="/vendor/:id" component={Vendor} queries={Query.vendor} />
+        <Route path="/product/:id" component={Product} queries={Query.product} />
     </Router>,
     document.getElementById('root')
 );

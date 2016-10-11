@@ -17,6 +17,10 @@ export default {
     
     vendor: {
         Vendor: () => Relay.QL`query { vendor (id: $id) }`
+    },
+
+    product: {
+        Product: () => Relay.QL`query { product (id: $id) }`
     }
     
 };

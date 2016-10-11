@@ -29,7 +29,6 @@ class catalog extends React.Component {
         );
     }
 }
-//
 
 export default Relay.createContainer(catalog, {
     fragments: {

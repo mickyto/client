@@ -5,13 +5,13 @@ import { Link } from 'react-router'
 import Header from '../header/header';
 import Categories from '../categories/categories';
 import Style from './index.scss';
-import Config from 'Config'
+import config from '../../../config';
 
 class index extends React.Component {
 
     handleImage(name) {
 
-        return `${Config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
+        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
     }
 
     render() {

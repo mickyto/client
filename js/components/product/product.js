@@ -3,12 +3,12 @@ import Relay from 'react-relay';
 
 import Header from '../header/header';
 import Style from './product.scss';
-import Config from 'Config'
+import config from '../../../config';
 
 class Product extends React.Component {
 
     handleImage(name) {
-        return `${Config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
+        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
     }
 
     render() {

@@ -31,7 +31,8 @@ const app = new WebpackDevServer(webpack(webpackConfig), {
         colors: true
     },
     hot: true,
-    inline: true
+    inline: true,
+    historyApiFallback: true
 });
 // Serve static resources
 app.use('/', express.static(path.resolve(__dirname, 'public')));

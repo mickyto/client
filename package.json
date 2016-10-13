@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "nodemon --watch server.js --exec \"babel-node ./server.js\"",
+    "start:dev": "npm run build && nodemon --watch server.js --exec \"babel-node ./server.js\"",
     "start:prod": "npm run build && babel-node ./server.js",
     "build": "webpack",
     "update-schema": "babel-node ./scripts/updateSchema.js"

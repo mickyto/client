@@ -8,17 +8,15 @@ import { schema } from './data/schema.js';
 import config from './config';
 
 const app = express();
-import chalk from 'chalk';
 
 if (config.env === 'production') {
-    console.log(chalk.green(config.env));
     app.use('/graphql', graphQLHTTP({ schema }));
     app.use('/', express.static(path.resolve(__dirname, 'public')));
     app.get('*', function (req, res) {
         res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
     });
     app.listen(config.port, function() {
-        console.log('Production Express server running at localhost:' + config.port)
+        console.log(`Production Express server running at localhost:${config.port}`)
     });
 }
 else {

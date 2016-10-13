@@ -3,3 +3,4 @@ data/schema.graphql
 *.log
 /public/bundle*
 /public/vendor*
+/public/index.html

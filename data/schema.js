@@ -8,7 +8,6 @@ import {
     GraphQLNonNull
 } from 'graphql';
 
-import chalk from 'chalk';
 import {
     connectionArgs,
     connectionDefinitions,
@@ -19,8 +18,6 @@ import {
     mutationWithClientMutationId,
     nodeDefinitions,
 } from 'graphql-relay';
-
-
 
 import {
     vendorModel,

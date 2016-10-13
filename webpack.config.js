@@ -18,11 +18,11 @@ let plugins = [
 ];
 
 if (process.env.NODE_ENV === 'production') {
-
+    
     appEntry = [path.join(__dirname, 'js/app.js')];
-
+    
     devtool = 'source-map';
-
+    
     plugins.push(new webpack.optimize.DedupePlugin());
     plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
     plugins.push(new webpack.DefinePlugin({
@@ -36,17 +36,17 @@ if (process.env.NODE_ENV === 'production') {
             screw_ie8: true
         }
     }));
-
+    
 } else {
-
+    
     appEntry = [
         path.join(__dirname, 'js/app.js'),
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server'
     ];
-
+    
     devtool = 'eval';
-
+    
     plugins.push(new webpack.NoErrorsPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new webpack.DefinePlugin({
@@ -73,7 +73,7 @@ module.exports = {
                     '&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
                 ]
             }
-        ]
+        ],
     },
     output: {
         path: path.join(__dirname, 'public'),

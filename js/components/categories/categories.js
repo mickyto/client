@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Link } from 'react-router'
+
 import Stylus from './categories.scss';
 
 class Categories extends React.Component {

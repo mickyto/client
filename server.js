@@ -3,6 +3,7 @@ import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+
 import webpackConfig from './webpack.config';
 import { schema } from './data/schema.js';
 import config from './config';

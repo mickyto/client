@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
-import { hashHistory, applyRouterMiddleware, Router, Route, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, Route, browserHistory } from 'react-router';
 import useRelay from 'react-router-relay';
 
 import Query from './routes/Query';

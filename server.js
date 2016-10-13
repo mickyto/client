@@ -5,37 +5,57 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
 import { schema } from './data/schema.js';
+import config from './config';
 
-const APP_PORT = 3000;
-const GRAPHQL_PORT = 8080;
+const app = express();
+import chalk from 'chalk';
 
-// Expose a GraphQL endpoint
-const graphQLServer = express();
-graphQLServer.use('/', graphQLHTTP({
-    schema,
-    pretty: true,
-    graphiql:true
-}));
-graphQLServer.listen(GRAPHQL_PORT, () => console.log(
-    `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}`
-));
+if (config.env === 'production') {
+    console.log(chalk.green(config.env));
+    app.use('/graphql', graphQLHTTP({ schema }));
+    app.use('/', express.static(path.resolve(__dirname, 'public')));
+    app.get('*', function (req, res) {
+        res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+    });
+    app.listen(config.port, function() {
+        console.log('Production Express server running at localhost:' + config.port)
+    });
+}
+else {
+    app.use('/', graphQLHTTP({
+        schema,
+        pretty: true,
+        graphiql:true
+    }));
+    app.listen(config.graphql.port, () => console.log(
+        `GraphQL Server is now running on http://localhost:${config.graphql.port}`
+    ));
 
-// Serve the Relay app
-const app = new WebpackDevServer(webpack(webpackConfig), {
-    contentBase: '/public/',
-    proxy: {
-        '/graphql': `http://localhost:${GRAPHQL_PORT}`
-    },
-    publicPath: '/js/',
-    stats: {
-        colors: true
-    },
-    hot: true,
-    inline: true,
-    historyApiFallback: true
-});
-// Serve static resources
-app.use('/', express.static(path.resolve(__dirname, 'public')));
-app.listen(APP_PORT, () => {
-    console.log(`App is now running on http://localhost:${APP_PORT}`);
-});
+    const devServer = new WebpackDevServer(webpack(webpackConfig), {
+        contentBase: '/public/',
+        proxy: {
+            '/graphql': `http://localhost:${config.graphql.port}`
+        },
+        publicPath: '/js/',
+        stats: {
+            colors: true
+        },
+        hot: true,
+        inline: true,
+        historyApiFallback: true
+    });
+    devServer.use('/', express.static(path.resolve(__dirname, 'public')));
+    devServer.listen(config.port, () => {
+        console.log(`App is now running on http://localhost:${config.port}`);
+    });
+}
+
+
+
+
+
+
+
+
+
+

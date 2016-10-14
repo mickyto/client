@@ -13,8 +13,18 @@ git clone https://github.com/skukit/client.git
 cd client
 docker build -t client .
 docker run --rm -v "$PWD":/usr/src/app/ client npm install
+
+```
+Running in production mode
+```
+docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --link mongo --name client client NODE_ENV=production npm start
+```
+
+Running in development mode
+```
 docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --link mongo --name client client npm start
 ```
+
 
 # Developing
 

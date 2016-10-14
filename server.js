@@ -3,12 +3,15 @@ import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import compression from 'compression';
 
 import webpackConfig from './webpack.config';
 import { schema } from './data/schema.js';
 import config from './config';
 
 const app = express();
+
+app.use(compression());
 
 if (config.env === 'production') {
     app.use('/graphql', graphQLHTTP({ schema }));

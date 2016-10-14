@@ -13,7 +13,7 @@ class catalog extends React.Component {
     }
     
     render() {
-        const { categories } = this.props.Categories;
+        const categories = this.props.viewer.categories;
         return (
             <div>
                 <Header />
@@ -32,8 +32,8 @@ class catalog extends React.Component {
 
 export default Relay.createContainer(catalog, {
     fragments: {
-        Categories: () => Relay.QL`
-            fragment on Categories {
+        viewer: () => Relay.QL`
+            fragment on Viewer {
                 categories {
                     categoryId
                     name

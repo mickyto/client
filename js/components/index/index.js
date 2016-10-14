@@ -15,11 +15,11 @@ class index extends React.Component {
     }
 
     render() {
-        const { vendors } = this.props.Vendor;
+        const { vendors } = this.props.viewer;
         return (
             <div>
                 <Header />
-                <Categories categories={this.props.Category} />
+                <Categories categories={this.props.viewer.categories} />
                 <div className={Style.root}>
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
@@ -35,23 +35,19 @@ class index extends React.Component {
 
 export default Relay.createContainer(index, {
     fragments: {
-        Vendor: () => Relay.QL`
-            fragment on Vendors {
+        viewer: () => Relay.QL`
+            fragment on Viewer {
                 vendors {
                     vendorId
                     name
                     logotype
                 }
-            }
-        `,
-        Category: () => Relay.QL`
-            fragment on Categories {
                 categories {
                     categoryId
                     name
                     ico
                 }
             }
-        `,
+        `
     }
 });

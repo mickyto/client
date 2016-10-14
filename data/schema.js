@@ -24,8 +24,6 @@ import {
     vendorSchema,
     categoryModel,
     productModel,
-    unitModel,
-    propertyModel,
     eventModel,
     mapReduceObject
 } from './mongooseModels';
@@ -91,124 +89,6 @@ const VendorType = new GraphQLObjectType({
     interfaces: [nodeInterface]
 });
 
-const getVendors = new GraphQLObjectType({
-    name: 'Vendors',
-    fields: {
-        id: globalIdField('Vendors'),
-        vendors: {
-            type: new GraphQLList(VendorType),
-            resolve: () => {
-                return new Promise((resolve, reject) => {
-                    vendorModel.find((err, vendors) => {
-                        if (err) reject(err);
-                        else resolve(vendors);
-                    });
-                });
-            }
-        }
-    },
-    interfaces: [nodeInterface]
-});
-
-const UnitType = new GraphQLObjectType({
-    name: 'Unit',
-    fields: {
-        id: globalIdField('Unit'),
-        unitId: {
-            type: GraphQLString,
-            resolve: (unit) => {
-                return unit._id
-            }
-        },
-        abbreviation: {
-            type: GraphQLString
-        }
-    },
-    interfaces: [nodeInterface],
-});
-
-const DefaultValueType = new GraphQLObjectType({
-    name: 'DefaultValue',
-    fields: {
-        id: globalIdField('DefaultValue'),
-        defaultValueId: {
-            type: GraphQLString,
-            resolve: (df) => {
-                return df._id
-            }
-        },
-        name: {
-            type: GraphQLString
-        }
-    },
-    interfaces: [nodeInterface],
-});
-
-const PropertyType = new GraphQLObjectType({
-    name: 'Property',
-    fields: {
-        id: globalIdField('Property'),
-        propertyId: {
-            type: GraphQLString,
-            resolve: (property) => {
-                return property._id
-            }
-        },
-        type: {
-            type: GraphQLString
-        },
-        name: {
-            type: GraphQLString
-        },
-        default_values: {
-            type: new GraphQLList(DefaultValueType),
-            resolve({ default_values }) {
-                return default_values;
-            }
-        }
-    },
-    interfaces: [nodeInterface],
-});
-
-const SpecificationType = new GraphQLObjectType({
-    name: 'Specification',
-    fields: {
-        id: globalIdField('Specification'),
-        specificationId: {
-            type: GraphQLString,
-            resolve: (spec) => {
-                return spec._id
-            }
-        },
-        value: {
-            type: GraphQLString
-        },
-        unit: {
-            type: UnitType,
-            resolve({ unit_id }) {
-                return new Promise((resolve, reject) => {
-                    unitModel.findById(unit_id, (err, unit) => {
-                        if (err) reject(err);
-                        else resolve(unit);
-                    });
-                });
-            }
-        },
-        property: {
-            type: PropertyType,
-            resolve({ property_id }) {
-                return new Promise((resolve, reject) => {
-                    propertyModel.findById(property_id, (err, property) => {
-                        if (err) reject(err);
-                        else resolve(property);
-                    });
-                });
-            }
-        }
-    },
-    interfaces: [nodeInterface]
-});
-
 const FrontImageType = new GraphQLObjectType({
     name: 'FrontImage',
     fields: {
@@ -264,13 +144,6 @@ const ProductType = new GraphQLObjectType({
                     });
                 });
             }
-        },
-        specifications: {
-            type: new GraphQLList(SpecificationType),
-            resolve({specifications}) {
-                
-                return specifications;
-            }
         }
     },
     interfaces: [nodeInterface],
@@ -324,11 +197,10 @@ const CategoryType = new GraphQLObjectType({
     interfaces: [nodeInterface]
 });
 
-
-
-const getCategories = new GraphQLObjectType({
-    name: 'Categories',
-    fields: () => ({
+const Viewer = new GraphQLObjectType({
+    name: 'Viewer',
+    fields: {
+        id: globalIdField('Viewer'),
         categories: {
             type: new GraphQLList(CategoryType),
             resolve() {
@@ -340,21 +212,26 @@ const getCategories = new GraphQLObjectType({
                 });
             }
         },
-        node: nodeField
-    })
+        vendors: {
+            type: new GraphQLList(VendorType),
+            resolve: () => {
+                return new Promise((resolve, reject) => {
+                    vendorModel.find((err, vendors) => {
+                        if (err) reject(err);
+                        else resolve(vendors);
+                    });
+                });
+            }
+        }
+    },
+    interfaces: [nodeInterface]
 });
 
 const queryType = new GraphQLObjectType({
     name: 'Query',
-    fields: () => ({
-        vendorViewer: {
-            type: getVendors,
-            resolve: () => {
-                return ''
-            }
-        },
-        categoryViewer: {
-            type: getCategories,
+    fields: {
+        viewer: {
+            type: Viewer,
             resolve: () => {
                 return ''
             }
@@ -419,7 +296,7 @@ const queryType = new GraphQLObjectType({
             }
         },
         node: nodeField
-    })
+    }
 });
 
 export const schema = new GraphQLSchema({

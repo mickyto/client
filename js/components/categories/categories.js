@@ -6,7 +6,7 @@ import Stylus from './categories.scss';
 class Categories extends React.Component {
 
     render() {
-        const { categories } = this.props.categories;
+        const categories = this.props.categories;
         return (
             <div className={Stylus.root}>
                 {categories.map(category => (

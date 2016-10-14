@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import chalk from 'chalk';
 mongoose.connect('mongodb://mongo:27017/content');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
@@ -28,21 +27,6 @@ export const vendorSchema = new Schema({
 	logotype: String
 });
 
-const unitSchema = new Schema({
-	_id: ObjectId,
-	name: String,
-	abbreviation: String,
-	measure_id: ObjectId
-});
-
-const propertySchema = new Schema({
-	_id: ObjectId,
-	name: String,
-	group_id: ObjectId,
-	type: String,
-	default_values: Array
-});
-
 const eventSchema = new Schema({
 	locale: String,
 	images: Array
@@ -52,8 +36,6 @@ const eventSchema = new Schema({
 export const categoryModel = mongoose.model('Category', categorySchema, 'category');
 export const productModel = mongoose.model('Product', productSchema, 'product');
 export const vendorModel = mongoose.model('Vendor', vendorSchema, 'vendor');
-export const unitModel = mongoose.model('Unit', unitSchema, 'unit');
-export const propertyModel = mongoose.model('Property', propertySchema, 'property');
 export const eventModel = mongoose.model('Event', eventSchema, 'event');
 
 export let mapReduceObject = id => {

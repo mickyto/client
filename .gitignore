@@ -1,6 +1,6 @@
 data/schema.graphql
 /node_modules/
 *.log
-/public/bundle*
+/public/app*
 /public/vendor*
 /public/index.html

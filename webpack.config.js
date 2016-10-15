@@ -73,12 +73,12 @@ module.exports = {
                     '&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
                 ]
             }
-        ],
+        ]
     },
     output: {
         path: path.join(__dirname, 'public'),
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     devtool,
     postcss: () => [precss, autoprefixer],

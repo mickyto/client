@@ -6,36 +6,43 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let appEntry;
 let devtool;
-let plugins = [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
-    new HtmlWebpackPlugin({
-        title: 'skukit',
-        filename: path.join(__dirname, 'public', 'index.html'),
-        template: path.join(__dirname, 'public', 'src.html'),
-        mobile: true,
-        inject: false
-    })
-];
+let plugins;
 
 if (process.env.NODE_ENV === 'production') {
     
     appEntry = [path.join(__dirname, 'js/app.js')];
     
     devtool = 'source-map';
-    
-    plugins.push(new webpack.optimize.DedupePlugin());
-    plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
-    plugins.push(new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify('production')
-        }
-    }));
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            screw_ie8: true
-        }
-    }));
+
+    plugins = [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                screw_ie8: true
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+        new HtmlWebpackPlugin({
+            title: 'skukit',
+            filename: path.join(__dirname, 'public', 'index.html'),
+            template: path.join(__dirname, 'public', 'src.html'),
+            mobile: true,
+            inject: false,
+            links: [
+                {
+                    href: '/index.css',
+                    rel: 'stylesheet'
+                }
+            ]
+        })
+    ];
     
 } else {
     
@@ -46,12 +53,34 @@ if (process.env.NODE_ENV === 'production') {
     ];
     
     devtool = 'eval';
-    
-    plugins.push(new webpack.NoErrorsPlugin());
-    plugins.push(new webpack.HotModuleReplacementPlugin());
-    plugins.push(new webpack.DefinePlugin({
-        __DEV__: true
-    }));
+
+    plugins = [
+        new webpack.NoErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            __DEV__: true
+        }),
+        new HtmlWebpackPlugin({
+            title: 'skukit',
+            filename: path.join(__dirname, 'public', 'index.html'),
+            template: path.join(__dirname, 'public', 'src.html'),
+            devServer: 'http://localhost:3000',
+            inject: false,
+            scripts: [
+                '/js/app.js'
+            ],
+            excludeChunks: [
+                'app',
+                'vendor'
+            ],
+            links: [
+                {
+                    href: '/index.css',
+                    rel: 'stylesheet'
+                }
+            ]
+        })
+    ];
 }
 
 module.exports = {

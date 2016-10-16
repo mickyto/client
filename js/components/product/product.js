@@ -13,7 +13,6 @@ class Product extends React.Component {
 
     render() {
         const product = this.props.Product;
-        console.log(product.specifications);
         return (
             <div>
                 <Header />

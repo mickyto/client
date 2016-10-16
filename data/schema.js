@@ -21,46 +21,30 @@ import {
 
 import {
     vendorModel,
-    vendorSchema,
     categoryModel,
     productModel,
     eventModel,
     mapReduceObject
 } from './mongooseModels';
 
-
 const {nodeInterface, nodeField} = nodeDefinitions(
     globalId => {
         const {type, id} = fromGlobalId(globalId);
-        console.log(id);
-        console.log(type);
         if (type === 'Vendor') {
-
+            return new Promise((resolve, reject) => {
                 vendorModel.findById(id, (err, vendor) => {
                     if (err) reject(err);
-                    return vendor;
-                })
-            
-        } else if (type === 'Category') {
-            return new Promise((resolve, reject) => {
-                categoryModel.findById(id, (err, category) => {
-                    if (err) reject(err);
-                    else resolve(category);
+                    else resolve(vendor);
                 });
             })
-        } else if (type === 'ProductType') {
-            return new Promise((resolve, reject) => {
-                productModel.findById(id, (err, product) => {
-                    if (err) reject(err);
-                    else resolve(product);
-                });
-            })
-        } else {
+        }
+        else {
             return null;
         }
     },
     obj => {
-        if (obj instanceof vendorSchema) {
+
+        if (obj.logotype) {
             return VendorType;
         }
         else {
@@ -75,9 +59,7 @@ const VendorType = new GraphQLObjectType({
         id: globalIdField('Vendor'),
         vendorId: {
             type: GraphQLString,
-            resolve: (vendor) => {
-                return vendor._id
-            }
+            resolve: vendor => vendor._id
         },
         name: {
             type: GraphQLString
@@ -282,7 +264,6 @@ const queryType = new GraphQLObjectType({
 
                         eventModel.mapReduce(mapReduceObject(product._id), (err, result) => {
 
-                            //console.log(chalk.red(result));
                             if (err) reject(err);
 
                             for (var i in result) {

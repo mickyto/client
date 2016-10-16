@@ -21,7 +21,7 @@ const productSchema = new Schema({
 	images: Array
 });
 
-export const vendorSchema = new Schema({
+const vendorSchema = new Schema({
 	_id: ObjectId,
 	name: String,
 	logotype: String
@@ -38,7 +38,7 @@ export const productModel = mongoose.model('Product', productSchema, 'product');
 export const vendorModel = mongoose.model('Vendor', vendorSchema, 'vendor');
 export const eventModel = mongoose.model('Event', eventSchema, 'event');
 
-export let mapReduceObject = id => {
+export const mapReduceObject = id => {
 
 	let o = {};
 

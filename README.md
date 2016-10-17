@@ -29,10 +29,3 @@ docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --link mongo --name client cl
 # Developing
 
 Any changes you make to files in the js/ directory will cause the server to automatically rebuild the app and refresh your browser.
-
-If at any time you make changes to data/schema.js, stop the server, regenerate data/schema.json, and restart the server:
-
-```
-npm run update-schema
-npm start
-```

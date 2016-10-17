@@ -1,12 +1,10 @@
 import express from 'express';
-import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import compression from 'compression';
 
 import webpackConfig from './webpack.config';
-import { schema } from './data/schema.js';
 import config from './config';
 
 const app = express();
@@ -14,7 +12,6 @@ const app = express();
 app.use(compression());
 
 if (config.env === 'production') {
-    app.use('/graphql', graphQLHTTP({ schema }));
     app.use('/', express.static(path.resolve(__dirname, 'public')));
     app.get('*', function (req, res) {
         res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
@@ -24,20 +21,9 @@ if (config.env === 'production') {
     });
 }
 else {
-    app.use('/', graphQLHTTP({
-        schema,
-        pretty: true,
-        graphiql:true
-    }));
-    app.listen(config.graphql.port, () => console.log(
-        `GraphQL Server is now running on http://localhost:${config.graphql.port}`
-    ));
 
     const devServer = new WebpackDevServer(webpack(webpackConfig), {
         contentBase: '/public/',
-        proxy: {
-            '/graphql': `http://localhost:${config.graphql.port}`
-        },
         publicPath: '/js/',
         stats: {
             colors: true

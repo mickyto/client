@@ -1,12 +1,8 @@
 Skukit client
 =============
-Skukit UI based on GraphQL server, Relay and React components
+Skukit UI based on Relay and React components. It also requires remote [GraphQL server](https://github.com/skukit/graphql).
 
 # Installation
-
-First set up and run database from this [link](https://github.com/skukit/summary/wiki/Start-and-provision-mongoDB)
-
-Then run following commands
 
 ```
 git clone https://github.com/skukit/client.git
@@ -17,12 +13,12 @@ docker run --rm -v "$PWD":/usr/src/app/ client npm install
 ```
 Running in production mode
 ```
-docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --link mongo --name client client NODE_ENV=production npm start
+docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/  --name client client NODE_ENV=production npm start
 ```
 
 Running in development mode
 ```
-docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --link mongo --name client client npm start
+docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --name client client npm start
 ```
 
 

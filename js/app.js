@@ -8,7 +8,7 @@ import routes from './routes/routes';
 import config from '../config';
 
 Relay.injectNetworkLayer(
-    new Relay.DefaultNetworkLayer(`${config.graphqlServer}/graphql`, {
+    new Relay.DefaultNetworkLayer(config.graphqlServer, {
         fetchTimeout: 30000,
         retryDelays: [5000]
     })

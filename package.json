@@ -2,9 +2,11 @@
   "private": true,
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "npm run build && nodemon --watch server.js --exec \"babel-node ./server.js\"",
-    "start:prod": "npm run build && babel-node ./server.js",
-    "build": "webpack"
+    "start:dev": "npm run build && run npm update-schema && nodemon --watch server.js --exec \"babel-node ./server.js\"",
+    "start:prod": "npm run build && run npm update-schema &&  babel-node ./server.js",
+    "build": "webpack",
+    "update-schema": "babel-node ./scripts/updateSchema.js"
+
   },
   "dependencies": {
     "autoprefixer": "^6.5.0",
@@ -23,6 +25,7 @@
     "graphql": "^0.7.2",
     "html-webpack-plugin": "^2.22.0",
     "if-env": "^1.0.0",
+    "node-fetch": "^1.6.3",
     "postcss-loader": "^0.13.0",
     "precss": "^1.4.0",
     "react": "^15.3.1",

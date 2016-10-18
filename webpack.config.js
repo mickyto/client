@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
         new HtmlWebpackPlugin({
             title: 'skukit',
             filename: path.join(__dirname, 'public', 'index.html'),
-            template: path.join(__dirname, 'public', 'src.html'),
+            template: path.join(__dirname, 'templates', 'src.html'),
             mobile: true,
             inject: false,
             links: [
@@ -63,7 +63,7 @@ if (process.env.NODE_ENV === 'production') {
         new HtmlWebpackPlugin({
             title: 'skukit',
             filename: path.join(__dirname, 'public', 'index.html'),
-            template: path.join(__dirname, 'public', 'src.html'),
+            template: path.join(__dirname, 'templates', 'src.html'),
             devServer: 'http://localhost:3000',
             inject: false,
             scripts: [

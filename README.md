@@ -11,6 +11,13 @@ docker build -t client .
 docker run --rm -v "$PWD":/usr/src/app/ client npm install
 
 ```
+# Configuration
+
+Before running you need configure environment. Create `config.js` file and make it like instance of `config,example.js`
+
+
+# Running
+
 Running in production mode
 ```
 docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/  --name client client NODE_ENV=production npm start
@@ -20,10 +27,6 @@ Running in development mode
 ```
 docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --name client client npm start
 ```
-
-# Configuration
-
-To configure create `config.js` file and make it like instance of `config,example.js`
 
 # Developing
 

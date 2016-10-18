@@ -21,6 +21,9 @@ Running in development mode
 docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --name client client npm start
 ```
 
+# Configuration
+
+To configure create `config.js` file and make it like instance of `config,example.js`
 
 # Developing
 

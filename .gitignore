@@ -4,3 +4,4 @@ data/schema.graphql
 /public/app*
 /public/vendor*
 /public/index.html
+/config.js

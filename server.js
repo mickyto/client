@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import compression from 'compression';
 
-import webpackConfig from './webpack.config';
+import webpackConfig from './webpack.config.babel';
 import config from './config';
 
 const app = express();

@@ -1,14 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
+import precss from 'precss';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import config from './config';
 
 let appEntry;
 let devtool;
 let plugins;
 
-if (process.env.NODE_ENV === 'production') {
+if (config.env === 'production') {
     
     appEntry = [path.join(__dirname, 'js/app.js')];
     
@@ -48,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
     
     appEntry = [
         path.join(__dirname, 'js/app.js'),
-        'webpack-dev-server/client?http://localhost:3000',
+        `webpack-dev-server/client?http://localhost:${config.port}`,
         'webpack/hot/only-dev-server'
     ];
     
@@ -64,7 +65,7 @@ if (process.env.NODE_ENV === 'production') {
             title: 'skukit',
             filename: path.join(__dirname, 'public', 'index.html'),
             template: path.join(__dirname, 'templates', 'src.html'),
-            devServer: 'http://localhost:3000',
+            devServer: `http://localhost:${config.port}`,
             inject: false,
             scripts: [
                 '/js/app.js'

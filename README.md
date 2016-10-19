@@ -9,18 +9,16 @@ git clone https://github.com/skukit/client.git
 cd client
 docker build -t client .
 docker run --rm -v "$PWD":/usr/src/app/ client npm install
-
 ```
 # Configuration
 
 Before running you need configure environment. Create `config.js` file and make it like instance of `config,example.js`
 
-
 # Running
 
 Running in production mode
 ```
-docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/  --name client client NODE_ENV=production npm start
+docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --name client client NODE_ENV=production npm start
 ```
 
 Running in development mode
@@ -31,3 +29,11 @@ docker run -d -p 3000:3000 -v "$PWD":/usr/src/app/ --name client client npm star
 # Developing
 
 Any changes you make to files in the js/ directory will cause the server to automatically rebuild the app and refresh your browser.
+
+If at any time you make changes in `schema.js` on remote graphql server, regenerate data/schema.json, and restart the container:
+
+```
+docker run --rm -v "$PWD":/usr/src/app/ --network=host client npm run update-schema
+docker restart client
+```
+

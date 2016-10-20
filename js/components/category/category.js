@@ -4,14 +4,9 @@ import { Link } from 'react-router'
 
 import Header from '../header/header';
 import Style from './category.scss';
-import config from '../../../config';
+import handleImage from '../handleImage'
 
 class category extends React.Component {
-
-    handleImage(name) {
-
-        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
-    }
 
     render() {
         const category = this.props.Category;
@@ -23,7 +18,7 @@ class category extends React.Component {
                     {category.products.map(product => (
                         <li key={product.__dataID__}>
                             <Link to={'/product/' + product.productId}>{product.vendor.name + " " + product.model}</Link>
-                            <img src={this.handleImage(product.front_image.src)} />
+                            <img src={handleImage(product.front_image.src)} />
                         </li>
                     ))}
                 </div>

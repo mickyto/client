@@ -4,24 +4,21 @@ import { Link } from 'react-router'
 
 import Header from '../header/header';
 import Style from './catalog.scss';
-import config from '../../../config';
+import handleImage from '../handleImage'
 
 class catalog extends React.Component {
 
-    handleImage(name) {
-        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
-    }
-    
     render() {
         const categories = this.props.viewer.categories;
         return (
             <div>
                 <Header />
+                <p>iuuuuj</p>
                 <div className={Style.root}>
                     {categories.map(category => (
                         <li key={category.__dataID__}>
                             <Link to={'/category/' + category.categoryId}>{category.name}</Link>
-                            <img src={this.handleImage(category.ico)} />
+                            <img src={handleImage(category.ico)} />
                         </li>
                     ))}
                 </div>
@@ -29,6 +26,7 @@ class catalog extends React.Component {
         );
     }
 }
+
 
 export default Relay.createContainer(catalog, {
     fragments: {

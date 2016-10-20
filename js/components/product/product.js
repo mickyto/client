@@ -3,14 +3,10 @@ import Relay from 'react-relay';
 
 import Header from '../header/header';
 import Style from './product.scss';
-import config from '../../../config';
+import handleImage from '../handleImage'
 
 class Product extends React.Component {
-
-    handleImage(name) {
-        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
-    }
-
+    
     render() {
         const product = this.props.Product;
         return (
@@ -19,7 +15,7 @@ class Product extends React.Component {
                 <div className={Style.root}>
                     <h1>{product.vendor.name + " " + product.model}</h1>
                     <h3>{product.description}</h3>
-                    <img src={this.handleImage(product.front_image.src)} />
+                    <img src={handleImage(product.front_image.src)} />
                 </div>
             </div>
         );

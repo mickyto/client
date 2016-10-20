@@ -5,15 +5,10 @@ import { Link } from 'react-router'
 import Header from '../header/header';
 import Categories from '../categories/categories';
 import Style from './index.scss';
-import config from '../../../config';
+import handleImage from '../handleImage'
 
 class index extends React.Component {
-
-    handleImage(name) {
-
-        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
-    }
-
+    
     render() {
         const { vendors } = this.props.viewer;
         return (
@@ -24,7 +19,7 @@ class index extends React.Component {
                     {vendors.map(vendor => (
                         <li key={vendor.__dataID__}>
                             <Link to={'/vendor/' + vendor.vendorId}>{vendor.name}</Link>
-                            <img src={this.handleImage(vendor.logotype)} />
+                            <img src={handleImage(vendor.logotype)} />
                         </li>
                     ))}
                 </div>

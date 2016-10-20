@@ -3,14 +3,10 @@ import Relay from 'react-relay';
 
 import Header from '../header/header';
 import Style from './vendor.scss';
-import config from '../../../config';
+import handleImage from '../handleImage'
 
 class Vendor extends React.Component {
 
-    handleImage(name) {
-
-        return `${config.imageServer}${name[0]}/${name[1]}/${name[2]}/${name}`
-    }
     render() {
         const vendor = this.props.Vendor;
         return (
@@ -18,7 +14,7 @@ class Vendor extends React.Component {
                 <Header />
                 <div className={Style.root}>
                     <h1>{vendor.name}</h1>
-                    <img src={this.handleImage(vendor.logotype)} />
+                    <img src={handleImage(vendor.logotype)} />
                 </div>
             </div>
         )

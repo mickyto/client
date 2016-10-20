@@ -13,7 +13,6 @@ class catalog extends React.Component {
         return (
             <div>
                 <Header />
-                <p>iuuuuj</p>
                 <div className={Style.root}>
                     {categories.map(category => (
                         <li key={category.__dataID__}>

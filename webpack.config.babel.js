@@ -50,7 +50,7 @@ if (config.env === 'production') {
     appEntry = [
         path.join(__dirname, 'js/app.js'),
         `webpack-dev-server/client?http://localhost:${config.port}`,
-        'webpack/hot/only-dev-server'
+        'webpack/hot/dev-server'
     ];
     
     devtool = 'eval';
@@ -114,5 +114,4 @@ module.exports = {
     postcss: () => [precss, autoprefixer],
     plugins
 };
-
 

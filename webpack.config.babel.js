@@ -84,7 +84,7 @@ if (config.env === 'production') {
     ];
 }
 
-module.exports = {
+const webpackConfig = {
     entry: {
         app: appEntry,
         vendor: ['react', 'react-dom', 'react-relay', 'react-router', 'react-router-relay']
@@ -115,3 +115,4 @@ module.exports = {
     plugins
 };
 
+export default webpackConfig;

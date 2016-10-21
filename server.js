@@ -37,13 +37,3 @@ else {
         console.log(`App is now running on http://localhost:${config.port}`);
     });
 }
-
-
-
-
-
-
-
-
-
-

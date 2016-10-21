@@ -8,7 +8,7 @@ Skukit UI based on Relay and React components. It also requires remote [GraphQL 
 git clone https://github.com/skukit/client.git
 cd client
 docker build -t client .
-docker run --rm -v "$PWD":/usr/src/app/ client npm install
+docker run --rm -v "$PWD":/usr/src/app/ client yarn install
 ```
 # Configuration
 

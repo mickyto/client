@@ -2,7 +2,6 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
-import { graphql } from 'graphql';
 import { buildClientSchema, introspectionQuery, printSchema } from 'graphql/utilities';
 import config from '../config';
 
@@ -12,11 +11,11 @@ const SERVER = config.graphqlServer;
 fetch(`${SERVER}`, {
     method: 'POST',
     headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({'query': introspectionQuery}),
-}).then(res => res.json()).then(schemaJSON => {
+    body: JSON.stringify({ query: introspectionQuery })
+}).then(res => res.json()).then((schemaJSON) => {
     fs.writeFileSync(
         path.join(__dirname, '../data/schema.json'),
         JSON.stringify(schemaJSON, null, 2)

@@ -1,14 +1,14 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 import Header from '../header/header';
 import Categories from '../categories/categories';
 import Style from './index.scss';
-import handleImage from '../handleImage'
+import handleImage from '../handleImage';
 
 class index extends React.Component {
-    
+
     render() {
         const { vendors } = this.props.viewer;
         return (
@@ -17,9 +17,9 @@ class index extends React.Component {
                 <Categories categories={this.props.viewer.categories} />
                 <div className={Style.root}>
                     {vendors.map(vendor => (
-                        <li key={vendor.__dataID__}>
-                            <Link to={'/vendor/' + vendor.vendorId}>{vendor.name}</Link>
-                            <img src={handleImage(vendor.logotype)} />
+                        <li key={vendor.vendorId}>
+                            <Link to={`/vendor/${vendor.vendorId}`}>{vendor.name}</Link>
+                            <img src={handleImage(vendor.logotype)} alt='logotype' />
                         </li>
                     ))}
                 </div>
@@ -27,6 +27,10 @@ class index extends React.Component {
         );
     }
 }
+
+index.propTypes = {
+    viewer: React.PropTypes.object.isRequired
+};
 
 export default Relay.createContainer(index, {
     fragments: {

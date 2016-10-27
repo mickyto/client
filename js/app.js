@@ -17,5 +17,3 @@ ReactDOM.render(
     <Router history={browserHistory} routes={routes} render={applyRouterMiddleware(useRelay)} environment={Relay.Store} />,
     document.getElementById('root')
 );
-
-

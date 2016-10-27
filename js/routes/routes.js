@@ -12,12 +12,10 @@ import Queries from './queries';
 
 export default (
     <Route>
-        <Route path="/" component={index} queries={Viewer} />
-        <Route path="/catalog" component={Catalog} queries={Viewer} />
-        <Route path="/category/:id" component={Category} queries={Queries.category} />
-        <Route path="/vendor/:id" component={Vendor} queries={Queries.vendor} />
-        <Route path="/product/:id" component={Product} queries={Queries.product} />
+        <Route path='/' component={index} queries={Viewer} />
+        <Route path='/catalog' component={Catalog} queries={Viewer} />
+        <Route path='/category/:id' component={Category} queries={Queries.category} />
+        <Route path='/vendor/:id' component={Vendor} queries={Queries.vendor} />
+        <Route path='/product/:id' component={Product} queries={Queries.product} />
     </Route>
 );
-
-

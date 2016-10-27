@@ -13,15 +13,13 @@ app.use(compression());
 
 if (config.env === 'production') {
     app.use('/', express.static(path.resolve(__dirname, 'public')));
-    app.get('*', function (req, res) {
-        res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
     });
-    app.listen(config.port, function() {
-        console.log(`Production Express server running at localhost:${config.port}`)
+    app.listen(config.port, () => {
+        console.log(`Production Express server running at localhost:${config.port}`);
     });
-}
-else {
-
+} else {
     const devServer = new WebpackDevServer(webpack(webpackConfig), {
         contentBase: '/public/',
         publicPath: '/js/',

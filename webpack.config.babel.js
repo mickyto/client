@@ -10,11 +10,8 @@ let devtool;
 let plugins;
 
 if (config.env === 'production') {
-    
     appEntry = [path.join(__dirname, 'js/app.js')];
-    
     devtool = 'source-map';
-
     plugins = [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -44,17 +41,13 @@ if (config.env === 'production') {
             ]
         })
     ];
-    
 } else {
-    
     appEntry = [
         path.join(__dirname, 'js/app.js'),
         `webpack-dev-server/client?http://localhost:${config.port}`,
         'webpack/hot/dev-server'
     ];
-    
     devtool = 'eval';
-
     plugins = [
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),

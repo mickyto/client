@@ -1,10 +1,10 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 import Header from '../header/header';
 import Style from './catalog.scss';
-import handleImage from '../handleImage'
+import handleImage from '../handleImage';
 
 class catalog extends React.Component {
 
@@ -15,9 +15,9 @@ class catalog extends React.Component {
                 <Header />
                 <div className={Style.root}>
                     {categories.map(category => (
-                        <li key={category.__dataID__}>
-                            <Link to={'/category/' + category.categoryId}>{category.name}</Link>
-                            <img src={handleImage(category.ico)} />
+                        <li key={category.categoryId}>
+                            <Link to={`/category/${category.categoryId}`}>{category.name}</Link>
+                            <img src={handleImage(category.ico)} alt='ico' />
                         </li>
                     ))}
                 </div>
@@ -26,6 +26,9 @@ class catalog extends React.Component {
     }
 }
 
+catalog.propTypes = {
+    viewer: React.PropTypes.object.isRequired
+};
 
 export default Relay.createContainer(catalog, {
     fragments: {

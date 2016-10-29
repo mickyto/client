@@ -1,0 +1,40 @@
+@import './variables.scss';
+
+img {
+  width: 100%;
+}
+
+
+.container {
+  background: #2aabd2;
+}
+
+.footer {
+  background: #f7f7f9;
+  padding: 20px;
+}
+
+.img {
+  text-align: center;
+
+  img {
+    height: 70px;
+    width: auto;
+    margin-bottom: 5px;
+  }
+}
+
+.back {
+  background-color: $gray !important;
+}
+
+.main {
+  justify-content: center !important;
+  padding: 30px 0px !important;
+}
+
+.vendors {
+  background: lightblue;
+  padding-top: 15px;
+  margin: 20px 0;
+}

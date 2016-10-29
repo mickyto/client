@@ -1,36 +1,36 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Link } from 'react-router';
+import { Row, Container } from 'reactstrap';
 
 import Header from '../header/header';
 import Categories from '../categories/categories';
-import Style from './index.scss';
-import handleImage from '../handleImage';
+import Vendors from '../vendors/vendors';
+import Description from './Description';
+import Motivation from './Motivation';
+import New from './New';
+import Footer from '../footer/footer';
+import Style from '../main.scss';
 
 class index extends React.Component {
 
     render() {
-        const { vendors } = this.props.viewer;
         return (
-            <div>
+            <div className={Style.back}>
                 <Header />
-                <Categories categories={this.props.viewer.categories} />
-                <div className={Style.root}>
-                    {vendors.map(vendor => (
-                        <li key={vendor.vendorId}>
-                            <Link to={`/vendor/${vendor.vendorId}`}>{vendor.name}</Link>
-                            <img src={handleImage(vendor.logotype)} alt='logotype' />
-                        </li>
-                    ))}
-                </div>
+                <Container>
+                    <Row className={Style.main}>
+                        <Categories categories={this.props.viewer.categories} />
+                        <Description />
+                        <Motivation />
+                    </Row>
+                    <New />
+                    <Vendors vendors={this.props.viewer.vendors} />
+                </Container>
+                <Footer />
             </div>
         );
     }
 }
-
-index.propTypes = {
-    viewer: React.PropTypes.object.isRequired
-};
 
 export default Relay.createContainer(index, {
     fragments: {

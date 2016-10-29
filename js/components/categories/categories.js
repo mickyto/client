@@ -1,20 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router';
-
-import Stylus from './categories.scss';
+import { Button, ButtonGroup, NavLink, Col } from 'reactstrap';
 
 class Categories extends React.Component {
 
     render() {
         const categories = this.props.categories;
         return (
-            <div className={Stylus.root}>
-                {categories.map(category => (
-                    <li key={category.categoryId}>
-                        <Link to={`/category/${category.categoryId}`}>{category.name}</Link>
-                    </li>
-                ))}
-            </div>
+            <Col sm={{ size: 2, offset: 0 }}>
+                <ButtonGroup vertical>
+                    {categories.map(category => (
+                        <Button outline color="primary" size="lg" key={category.categoryId} href={`/category/${category.categoryId}`}>
+                            {category.name}
+                        </Button>
+                    ))}
+                </ButtonGroup>
+                <hr className="my-2" />
+                <Button color="info" href="/catalog" outline size="lg">All categories</Button>{' '}
+            </Col>
         );
     }
 }

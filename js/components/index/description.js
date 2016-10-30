@@ -5,7 +5,7 @@ const Description = () => {
     return (
         <Col xs="6">
             <Jumbotron>
-                <img src="images/goods.png" />
+                <img src="images/goods.png" width="100%" />
                 <h1 className="display-3">Wikicatalog</h1>
                 <p className="lead">We collect information about 4 500 industrial tools and equipment</p>
                 <hr className="my-2" />

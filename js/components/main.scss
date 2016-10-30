@@ -1,9 +1,5 @@
 @import './variables.scss';
 
-img {
-  width: 100%;
-}
-
 .container {
   background: #2aabd2;
 }
@@ -38,11 +34,14 @@ img {
   margin: 20px 0;
 }
 
-.category {
+.martop {
   margin-top: 20px;
-
-  .card {
-    margin: 20px 0px;
-  }
 }
 
+.card {
+  margin: 20px 0px;
+}
+
+.media {
+  width: 200px;
+}

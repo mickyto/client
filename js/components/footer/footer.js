@@ -25,7 +25,7 @@ const Footer = () => {
                         </Nav>
                     </Col>
                     <Col sm="3" className="text-xs-center">
-                        <img src="images/mobile.png" />
+                        <img src="/images/mobile.png" />
                     </Col>
                     <Col sm="3" className="text-xs-center">
                         <p>Languages</p>
@@ -42,7 +42,7 @@ const Footer = () => {
                         </Nav>
                     </Col>
                     <Col sm="3" className="text-xs-center">
-                        <img src="images/social.png" />
+                        <img src="/images/social.png" />
                     </Col>
                 </Row>
                 <hr className="my-2" />

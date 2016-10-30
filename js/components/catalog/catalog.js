@@ -18,7 +18,7 @@ class catalog extends React.Component {
                 <Header />
                 <Container className={Style.main}>
                     <h1 className="display-4">Catalog</h1>
-                    <CardDeck className={Style.category}>
+                    <CardDeck className={Style.martop}>
                         {categories.map(category => (
                             <Col sm="3" key={category.categoryId} className={Style.card}>
                                 <Link to={`/category/${category.categoryId}`}>

@@ -4,7 +4,6 @@ img {
   width: 100%;
 }
 
-
 .container {
   background: #2aabd2;
 }
@@ -38,3 +37,12 @@ img {
   padding-top: 15px;
   margin: 20px 0;
 }
+
+.category {
+  margin-top: 20px;
+
+  .card {
+    margin: 20px 0px;
+  }
+}
+

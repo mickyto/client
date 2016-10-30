@@ -1,9 +1,12 @@
 import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
+import { Card, CardImg, CardDeck,
+    CardTitle, Container, Col} from 'reactstrap';
 
 import Header from '../header/header';
-import Style from './catalog.scss';
+import Footer from '../footer/footer';
+import Style from '../main.scss';
 import handleImage from '../handleImage';
 
 class catalog extends React.Component {
@@ -11,16 +14,24 @@ class catalog extends React.Component {
     render() {
         const categories = this.props.viewer.categories;
         return (
-            <div>
+            <div className={Style.back}>
                 <Header />
-                <div className={Style.root}>
-                    {categories.map(category => (
-                        <li key={category.categoryId}>
-                            <Link to={`/category/${category.categoryId}`}>{category.name}</Link>
-                            <img src={handleImage(category.ico)} alt='ico' />
-                        </li>
-                    ))}
-                </div>
+                <Container className={Style.main}>
+                    <h1 className="display-4">Catalog</h1>
+                    <CardDeck className={Style.category}>
+                        {categories.map(category => (
+                            <Col sm="3" key={category.categoryId} className={Style.card}>
+                                <Link to={`/category/${category.categoryId}`}>
+                                    <Card block outline color="info">
+                                        <CardTitle>{category.name}</CardTitle>
+                                        <CardImg top width="100%" src={handleImage(category.ico)} alt='ico' />
+                                    </Card>
+                                </Link>
+                            </Col>
+                        ))}
+                    </CardDeck>
+                </Container>
+                <Footer />
             </div>
         );
     }

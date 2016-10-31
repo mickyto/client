@@ -1,10 +1,35 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Input, Col, Jumbotron} from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Col, Jumbotron, Row } from 'reactstrap';
 
 
 class filter extends React.Component {
 
+    inArray = function(arr, item) {
+        for(var i=0; i < arr.length; i++) {
+            if(arr[i] === item) return true;
+        }
+        return false;
+    };
+
+
+    constructor(props) {
+        super(props);
+        let vendors = [];
+        props.products.map(
+            product => {
+                if (!this.inArray(vendors, product.vendor.name)) {
+                    vendors.push(product.vendor.name);
+                }
+            }
+        );
+        this.state = {
+            vendors: vendors
+        }
+    }
+
+
     render() {
+        const vendors = this.state.vendors;
         return (
             <Jumbotron>
                 <p>Price</p>
@@ -22,16 +47,15 @@ class filter extends React.Component {
                     </InputGroupAddon>
                 </InputGroup>
                 <br />
+                <Row>
                 <p>Vendor</p>
-                <Col sm="6">
-                    <Input addon type="checkbox" aria-label="Checkbox for following text input" />
-                    <small>  Makita</small>
+                {vendors.map(name => (
+                    <Col sm="6" key={name}>
+                        <Input addon type="checkbox" aria-label="Checkbox for following text input" />
+                        <p className="form-check-inline">{name}</p>
                     </Col>
-                <Col sm="6">
-                    <Input addon type="checkbox" aria-label="Checkbox for following text input" />
-                    <small>  Hilti</small>
-                </Col>
-                <br />
+                ))}
+                </Row>
                 <br />
                 <p>Weight</p>
                 <InputGroup>
@@ -41,7 +65,6 @@ class filter extends React.Component {
                     <Input />
                 </InputGroup>
                 <br />
-
             </Jumbotron>
         );
     }

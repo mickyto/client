@@ -45,7 +45,7 @@ class Header extends React.Component {
                 <Col sm="4" md={{ size: 2, offset: 0 }}>
                     <NavbarBrand href="/">Skukit</NavbarBrand>
                 </Col>
-                <Nav className="float-xs-right" navbar>
+                <Nav navbar>
                     <NavItem>
                         <NavLink href="/">Home</NavLink>
                     </NavItem>

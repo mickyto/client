@@ -6,7 +6,7 @@ import Style from '../main.scss';
 const New = (props) => {
     return (
         <Container className={Style.container}>
-            <p className="lead">New</p>
+            <h1 className="display-5">New</h1>
             <CardDeck>
                 <Card>
                     <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180" alt="Card image cap" />

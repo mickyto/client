@@ -1,7 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import { Jumbotron, Button, CardDeck, Card,
-    Container, Col, Row} from 'reactstrap';
+    Container, Col, Row } from 'reactstrap';
 
 import Header from '../header/header';
 import Style from '../main.scss';
@@ -26,22 +26,22 @@ class Product extends React.Component {
                     <p>SKUKIT ID: {product.productId}</p>
                     <Row>
                     <Col sm="5" className={Style.martop}>
-                        <img width="430" src={handleImage(product.front_image.src)} alt='front' />
+                        <img width="430" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
                         <Col sm="12" className={Style.martop}>
                             <CardDeck>
                                 <Card>
-                                    <img width="100" src={handleImage(product.front_image.src)} alt='front' />
+                                    <img width="100" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
                                 </Card>
 
                                 <Card>
-                                    <img width="100" src={handleImage(product.front_image.src)} alt='front' />
+                                    <img width="100" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
                                 </Card>
 
                                 <Card>
-                                    <img width="100" src={handleImage(product.front_image.src)} alt='front' />
+                                    <img width="100" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
                                 </Card>
                                 <Card>
-                                    <img width="100" src={handleImage(product.front_image.src)} alt='front' />
+                                    <img width="100" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
                                 </Card>
                            </CardDeck>
                         </Col>

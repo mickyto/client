@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Container, Col, Media, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+    Container, Col, Media, Card, Row, Input } from 'reactstrap';
 
 import Header from '../header/header';
 import Filter from '../filter/filter';
@@ -30,6 +30,7 @@ class category extends React.Component {
 
     render() {
         const categ = this.props.Category;
+        console.log(this);
         return (
             <div className={Style.back}>
                 <Header />
@@ -49,26 +50,32 @@ class category extends React.Component {
                         </Dropdown>
                         <hr className="my-2" />
                         {categ.products.map(product => (
-                        <Media key={product.productId}>
-                            <Media left href={`/product/${product.productId}`}>
-                                <Media object src={handleImage(product.front_image.src)} className={Style.media} alt="front" />
-                            </Media>
-                            <Media body>
-                                <Media heading>
-                                    <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
+                            <Card block outline color="info" key={product.productId}>
+                                <Media>
+                                    <div className={Style.image}>
+                                    <span></span>
+                                        <img src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt="front" />
+
+                                        </div>
+                                    <Media body>
+                                        <Media heading>
+                                            <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
+                                        </Media>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                        <Row>
+                                        <Col sm={{ size: 4, push: 1, pull: 0 }}>
+                                            <Input type="checkbox" aria-label="Checkbox for following text input" />
+                                            <p className={Style.sky}>Add to compare</p>
+                                        </Col>
+                                        </Row>
+                                    </Media>
                                 </Media>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                <Col sm={{ size: 6, push: 1, pull: 1 }}>
-                                    <Input type="checkbox" aria-label="Checkbox for following text input" />
-                                    <p className={Style.sky}>Add to compare</p>
-                                </Col>
-                            </Media>
-                        </Media>
+                            </Card>
                          ))}
                         <Pagination />
                     </Col>
                     <Col sm="4">
-                        <Filter />
+                        <Filter products={categ.products} />
                     </Col>
                 </Container>
                 <Footer />

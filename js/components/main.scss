@@ -52,9 +52,7 @@
   margin: 20px 0px;
 }
 
-.media {
-  width: 200px;
-}
+
 
 .table {
   color: black;
@@ -74,5 +72,25 @@
   position: relative;
   bottom: 50px;
   right: 90px
+}
+
+.image {
+  float: left;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  margin-right: 15px;
+
+  span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  img {
+    max-width: 150px;
+    max-height: 150px;
+    vertical-align: middle;
+  }
 }
 

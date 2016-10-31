@@ -23,8 +23,7 @@
     <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
     <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
-    <link rel="stylesheet" href="https://npmcdn.com/bootstrap@4.0.0-alpha.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 </head>
 <body>
 <div id="root"></div>

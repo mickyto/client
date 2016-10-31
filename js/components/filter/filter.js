@@ -1,6 +1,5 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Input, DropdownItem,
-    Container, Col, Media, Jumbotron} from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Col, Jumbotron} from 'reactstrap';
 
 
 class filter extends React.Component {

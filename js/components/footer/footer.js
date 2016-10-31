@@ -1,12 +1,19 @@
 import React from 'react';
 import { Row, Nav, Col, NavItem, NavLink, InputGroup,
     Input, InputGroupButton, Container } from 'reactstrap';
+import FaApple from 'react-icons/lib/fa/apple'
+import FaAndroid from 'react-icons/lib/fa/android'
+import FaWindows from 'react-icons/lib/fa/windows'
+import FaInstagram from 'react-icons/lib/fa/instagram'
+import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
+import FaTwitter from 'react-icons/lib/fa/twitter-square'
+
 import Style from '../main.scss';
 
 const Footer = () => {
     return (
         <div className={Style.footer}>
-            <Container>
+            <Container className={Style.footer}>
                 <Row>
                     <Col sm="3" className="text-xs-center">
                         <Nav>
@@ -25,7 +32,9 @@ const Footer = () => {
                         </Nav>
                     </Col>
                     <Col sm="3" className="text-xs-center">
-                        <img src="/images/mobile.png" />
+                        <FaApple className={Style.mobIcon} />
+                        <FaAndroid className={Style.mobIcon} />
+                        <FaWindows className={Style.mobIcon} />
                     </Col>
                     <Col sm="3" className="text-xs-center">
                         <p>Languages</p>
@@ -42,7 +51,9 @@ const Footer = () => {
                         </Nav>
                     </Col>
                     <Col sm="3" className="text-xs-center">
-                        <img src="/images/social.png" />
+                        <FaInstagram className={Style.mobIcon} />
+                        <FaFacebookSquare className={Style.mobIcon} />
+                        <FaTwitter className={Style.mobIcon} />
                     </Col>
                 </Row>
                 <hr className="my-2" />

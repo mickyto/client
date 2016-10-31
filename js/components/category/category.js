@@ -2,10 +2,11 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Container, Col, Media, Jumbotron} from 'reactstrap';
+    Container, Col, Media, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 import Header from '../header/header';
 import Filter from '../filter/filter';
+import Pagination from '../pagination/pagination';
 import Footer from '../footer/footer';
 import Style from '../main.scss';
 import handleImage from '../handleImage';
@@ -57,9 +58,14 @@ class category extends React.Component {
                                     <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
                                 </Media>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                <Col sm={{ size: 6, push: 1, pull: 1 }}>
+                                    <Input type="checkbox" aria-label="Checkbox for following text input" />
+                                    <p className={Style.sky}>Add to compare</p>
+                                </Col>
                             </Media>
                         </Media>
                          ))}
+                        <Pagination />
                     </Col>
                     <Col sm="4">
                         <Filter />

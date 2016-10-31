@@ -7,7 +7,16 @@
 .footer {
   background: #f7f7f9;
   padding: 20px;
+
+
 }
+
+.mobIcon {
+  width: 60px;
+  height: 60px;
+  color: dimgray;
+}
+
 
 .img {
   text-align: center;
@@ -19,8 +28,9 @@
   }
 }
 
-.back {
-  background-color: $gray !important;
+
+.sky {
+  color: deepskyblue;
 }
 
 .main {
@@ -45,3 +55,24 @@
 .media {
   width: 200px;
 }
+
+.table {
+  color: black;
+
+  table, thead, tbody, th, tr, td {
+    border: 0px !important;
+  }
+
+  td {
+    text-indent: 30px;
+  }
+}
+
+.review {
+  font-size: 4.5rem;
+  font-weight: 200;
+  position: relative;
+  bottom: 50px;
+  right: 90px
+}
+

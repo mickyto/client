@@ -95,6 +95,9 @@ const webpackConfig = {
                     'css?modules&importLoaders=1' +
                     '&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
                 ]
+            }, {
+                test: /\.css$/,
+                loaders: ['style', 'css']
             }
         ]
     },

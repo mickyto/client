@@ -14,7 +14,7 @@ class Vendors extends React.Component {
                         <Card>
                             <NavLink href={`/vendor/${vendor.vendorId}`}>
                                 <CardHeader>{vendor.name}</CardHeader>
-                                <CardImg width="100%" src={handleImage(vendor.logotype)} alt={vendor.name} />
+                                <CardImg width="100%" src={ vendor.logotype !== null ? handleImage(vendor.logotype) : '/images/noImage.png' } alt={vendor.name} />
                             </NavLink>
                         </Card>
                     </Col>

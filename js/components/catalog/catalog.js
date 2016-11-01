@@ -24,7 +24,7 @@ class catalog extends React.Component {
                                 <Link to={`/category/${category.categoryId}`}>
                                     <Card block outline color="info">
                                         <CardTitle>{category.name}</CardTitle>
-                                        <CardImg top width="100%" src={handleImage(category.ico)} alt='ico' />
+                                        <CardImg top width="100%" src={ category.ico !== null ? handleImage(category.ico) : '/images/noImage.png'} alt='ico' />
                                     </Card>
                                 </Link>
                             </Col>

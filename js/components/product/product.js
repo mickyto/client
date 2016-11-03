@@ -65,11 +65,11 @@ class Product extends React.Component {
                             <Review />
                             <br />
                             <Container fluid>
-                                <p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.  Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui.</p>
+                                <p className="lead">{product.description}</p>
                             </Container>
                             <br />
                             <Col sm="6">
-                                <Specifications />
+                                <Specifications specs={product.specifications} />
                             </Col>
                             <Col sm="6">
                                 <Features />
@@ -109,14 +109,45 @@ Product.propTypes = {
 export default Relay.createContainer(Product, {
     fragments: {
         Product: () => Relay.QL`
-            fragment on ProductType {
+            fragment on Product {
                 productId
                 model
+                description
                 vendor {
                     name
                 }
                 front_image {
                     src
+                }
+                specifications {
+                    property {
+                        name
+                    }
+                    unit {
+                        abbreviation
+                    }
+                    value {
+                        ... on SpecEnumType {
+                            default_value {
+                                name
+                            }
+                        }
+                        ... on SpecIntType {
+                            value
+                        }
+                        ... on SpecSetType {
+                            default_values {
+                                name
+                            }
+                        }
+                        ... on SpecPeriodType {
+                            to
+                            from
+                        }
+                        ... on SpecDualType {
+                            true
+                        }
+                    }
                 }
             }
         `

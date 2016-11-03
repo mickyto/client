@@ -61,7 +61,7 @@ class category extends React.Component {
                                         <Media heading>
                                             <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
                                         </Media>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                        {product.description}
                                         <Row>
                                         <Col sm={{ size: 4, push: 1, pull: 0 }}>
                                             <Input type="checkbox" aria-label="Checkbox for following text input" />
@@ -96,6 +96,7 @@ export default Relay.createContainer(category, {
                 products {
                     productId
                     model
+                    description
                     vendor {
                         name
                     }

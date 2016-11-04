@@ -1,12 +1,12 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Link } from 'react-router';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Container, Col, Media, Card, Row, Input } from 'reactstrap';
+    Container, Col } from 'reactstrap';
 
 import Header from '../header/header';
 import Filter from '../filter/filter';
 import Pagination from '../pagination/pagination';
+import ProductCard from './productCard';
 import Footer from '../footer/footer';
 import Style from '../main.scss';
 import handleImage from '../handleImage';
@@ -30,7 +30,6 @@ class category extends React.Component {
 
     render() {
         const categ = this.props.Category;
-        console.log(this);
         return (
             <div className={Style.back}>
                 <Header />
@@ -49,29 +48,7 @@ class category extends React.Component {
                             </DropdownMenu>
                         </Dropdown>
                         <hr className="my-2" />
-                        {categ.products.map(product => (
-                            <Card block outline color="info" key={product.productId}>
-                                <Media>
-                                    <div className={Style.image}>
-                                    <span></span>
-                                        <img src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt="front" />
-
-                                        </div>
-                                    <Media body>
-                                        <Media heading>
-                                            <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
-                                        </Media>
-                                        {product.description}
-                                        <Row>
-                                        <Col sm={{ size: 4, push: 1, pull: 0 }}>
-                                            <Input type="checkbox" aria-label="Checkbox for following text input" />
-                                            <p className={Style.sky}>Add to compare</p>
-                                        </Col>
-                                        </Row>
-                                    </Media>
-                                </Media>
-                            </Card>
-                         ))}
+                        <ProductCard products={categ.products} />
                         <Pagination />
                     </Col>
                     <Col sm="4">
@@ -102,6 +79,36 @@ export default Relay.createContainer(category, {
                     }
                     front_image {
                         src
+                    }
+                    specifications {
+                        property {
+                            name
+                        }
+                        unit {
+                            abbreviation
+                        }
+                        value {
+                            ... on SpecEnumType {
+                                default_value {
+                                    name
+                                }
+                            }
+                            ... on SpecIntType {
+                                value
+                            }
+                            ... on SpecSetType {
+                                default_values {
+                                    name
+                                }
+                            }
+                            ... on SpecPeriodType {
+                                to
+                                from
+                            }
+                            ... on SpecDualType {
+                                true
+                            }
+                        }
                     }
                 }
             }

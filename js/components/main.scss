@@ -28,10 +28,35 @@
   }
 }
 
+.cardSpec {
+  padding: 0px;
 
-.sky {
-  color: deepskyblue;
+  input[type=checkbox] {
+    position: initial;
+    margin: 0;
+    margin-right: 5px;
+    float: left;
+  }
+  
+  div {
+    margin-top: 10px;
+    padding: 0px;
+  }
+
+  p {
+    font-size: 80%;
+    font-weight: 400;
+    margin: 0px;
+  }
+
+  h6 {
+    color: deepskyblue;
+    margin: 0px;
+    line-height: 15px
+  }
 }
+
+
 
 .main {
   justify-content: center !important;

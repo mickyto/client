@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Col,
-    ButtonDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
-} from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Col,
+    ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Search from './search';
 
 

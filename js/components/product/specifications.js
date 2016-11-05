@@ -5,7 +5,6 @@ import Style from '../main.scss';
 
 class specifications extends React.Component {
     render() {
-        console.log(this.props.specs);
         return (
             <div>
                 <h1 className="display-5">Specifications</h1>

@@ -1,15 +1,13 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Container, Col } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Col } from 'reactstrap';
 
-import Header from '../header/header';
 import Filter from '../filter/filter';
 import Pagination from '../pagination/pagination';
 import ProductCard from './productCard';
-import Footer from '../footer/footer';
 import Style from '../main.scss';
-import handleImage from '../handleImage';
+import Layout from '../layout/layout';
+
 
 class category extends React.Component {
 
@@ -31,32 +29,28 @@ class category extends React.Component {
     render() {
         const categ = this.props.Category;
         return (
-            <div className={Style.back}>
-                <Header />
-                <Container className={Style.main}>
-                    <h1 className="display-4">{categ.name}</h1>
-                    <Col sm="8" className={Style.martop}>
-                        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                            <DropdownToggle caret>
-                                Sort by
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem>Price</DropdownItem>
-                                <DropdownItem>Popularity</DropdownItem>
-                                <DropdownItem>Rating</DropdownItem>
-                                <DropdownItem>Novelty</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                        <hr className="my-2" />
-                        <ProductCard products={categ.products} />
-                        <Pagination />
-                    </Col>
-                    <Col sm="4">
-                        <Filter products={categ.products} />
-                    </Col>
-                </Container>
-                <Footer />
-            </div>
+            <Layout>
+                <h1 className="display-4">{categ.name}</h1>
+                <Col sm="8" className={Style.martop}>
+                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                        <DropdownToggle caret>
+                            Sort by
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem>Price</DropdownItem>
+                            <DropdownItem>Popularity</DropdownItem>
+                            <DropdownItem>Rating</DropdownItem>
+                            <DropdownItem>Novelty</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                    <hr className="my-2" />
+                    <ProductCard products={categ.products} />
+                    <Pagination />
+                </Col>
+                <Col sm="4">
+                    <Filter products={categ.products} />
+                </Col>
+            </Layout>
         );
     }
 }

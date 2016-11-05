@@ -1,11 +1,9 @@
 import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
-import { Card, CardImg, CardDeck,
-    CardTitle, Container, Col} from 'reactstrap';
+import { Card, CardImg, CardDeck, CardTitle, Col} from 'reactstrap';
 
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Layout from '../layout/layout';
 import Style from '../main.scss';
 import handleImage from '../handleImage';
 
@@ -14,25 +12,21 @@ class catalog extends React.Component {
     render() {
         const categories = this.props.viewer.categories;
         return (
-            <div className={Style.back}>
-                <Header />
-                <Container className={Style.main}>
-                    <h1 className="display-4">Catalog</h1>
-                    <CardDeck className={Style.martop}>
-                        {categories.map(category => (
-                            <Col sm="3" key={category.categoryId} className={Style.card}>
-                                <Link to={`/category/${category.categoryId}`}>
-                                    <Card block outline color="info">
-                                        <CardTitle>{category.name}</CardTitle>
-                                        <CardImg top width="100%" src={ category.ico !== null ? handleImage(category.ico) : '/images/noImage.png'} alt='ico' />
-                                    </Card>
-                                </Link>
-                            </Col>
-                        ))}
-                    </CardDeck>
-                </Container>
-                <Footer />
-            </div>
+            <Layout>
+                <h1 className="display-4">Catalog</h1>
+                <CardDeck className={Style.martop}>
+                    {categories.map(category => (
+                        <Col sm="3" key={category.categoryId} className={Style.card}>
+                            <Link to={`/category/${category.categoryId}`}>
+                                <Card block outline color="info">
+                                    <CardTitle>{category.name}</CardTitle>
+                                    <CardImg top width="100%" src={ category.ico !== null ? handleImage(category.ico) : '/images/noImage.png'} alt='ico' />
+                                </Card>
+                            </Link>
+                        </Col>
+                    ))}
+                </CardDeck>
+            </Layout>
         );
     }
 }

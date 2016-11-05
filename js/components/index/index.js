@@ -1,33 +1,29 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Row, Container } from 'reactstrap';
+import { Row } from 'reactstrap';
 
-import Header from '../header/header';
 import Categories from '../categories/categories';
 import Vendors from '../vendors/vendors';
 import Description from './Description';
 import Motivation from './Motivation';
 import New from './New';
-import Footer from '../footer/footer';
 import Style from '../main.scss';
+import Layout from '../layout/layout';
+
 
 class index extends React.Component {
 
     render() {
         return (
-            <div className={Style.back}>
-                <Header />
-                <Container>
-                    <Row className={Style.main}>
-                        <Categories categories={this.props.viewer.categories} />
-                        <Description />
-                        <Motivation />
-                    </Row>
-                    <New />
-                    <Vendors vendors={this.props.viewer.vendors} />
-                </Container>
-                <Footer />
-            </div>
+            <Layout>
+                <Row className={Style.main}>
+                    <Categories categories={this.props.viewer.categories} />
+                    <Description />
+                    <Motivation />
+                </Row>
+                <New />
+                <Vendors vendors={this.props.viewer.vendors} />
+            </Layout>
         );
     }
 }

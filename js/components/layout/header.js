@@ -64,8 +64,11 @@ class Header extends React.Component {
                         {this.state.currentLang}
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem onClick={() => this.setLang('Russian')}>Russian</DropdownItem>
-                        <DropdownItem onClick={() => this.setLang('English')}>English</DropdownItem>
+                        {this.props.locales.map(({name}) => (
+                            <div key={name}>
+                                <DropdownItem onClick={() => this.setLang(name)}>{name}</DropdownItem>
+                            </div>
+                        ))}
                     </DropdownMenu>
                 </ButtonDropdown>
             </Navbar>

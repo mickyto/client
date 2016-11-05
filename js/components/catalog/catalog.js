@@ -3,7 +3,6 @@ import Relay from 'react-relay';
 import { Link } from 'react-router';
 import { Card, CardImg, CardDeck, CardTitle, Col} from 'reactstrap';
 
-import Layout from '../layout/layout';
 import Style from '../main.scss';
 import handleImage from '../handleImage';
 
@@ -13,12 +12,12 @@ class Catalog extends React.Component {
     render() {
         const categories = this.props.viewer.categories;
         return (
-            <Layout>
+            <div>
                 <h1 className="display-4">Catalog</h1>
                 <CardDeck className={Style.martop}>
                     {categories.map(category => (
                         <Col sm="3" key={category.categoryId} className={Style.card}>
-                            <Link to={`/category/${category.__dataID__}`}>
+                            <Link to={`/category/${category.categoryId}`}>
                                 <Card block outline color="info">
                                     <CardTitle>{category.name}</CardTitle>
                                     <CardImg top width="100%" src={ category.ico !== null ? handleImage(category.ico) : '/images/noImage.png'} alt='ico' />
@@ -27,7 +26,7 @@ class Catalog extends React.Component {
                         </Col>
                     ))}
                 </CardDeck>
-            </Layout>
+            </div>
         );
     }
 }

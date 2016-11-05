@@ -3,7 +3,6 @@ import Relay from 'react-relay';
 import { Jumbotron, Button, CardDeck, Card,
     Container, Col, Row } from 'reactstrap';
 
-import Layout from '../layout/layout';
 import Style from '../main.scss';
 import Prices from './prices';
 import Review from './review';
@@ -19,7 +18,7 @@ class Product extends React.Component {
     render() {
         const product = this.props.Product;
         return (
-            <Layout>
+            <div>
                 <h1 className="display-4">{`${product.vendor.name} ${product.model}`}</h1>
                 <p>SKUKIT ID: {product.productId}</p>
                 <Row>
@@ -92,7 +91,7 @@ class Product extends React.Component {
                         <UserReview />
                     </Col>
                 </Row>
-            </Layout>
+            </div>
         );
     }
 }

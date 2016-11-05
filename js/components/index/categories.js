@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, NavLink, Col } from 'reactstrap';
+import { Button, ButtonGroup, Col } from 'reactstrap';
 
 class Categories extends React.Component {
 

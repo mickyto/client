@@ -18,7 +18,7 @@ class ProductCard extends React.Component {
                             <img src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt="front" />
                         </div>
                         <CardTitle>
-                            <Link to={`/product/${product.__dataID__}`}>{`${product.vendor.name} ${product.model}`}</Link>
+                            <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
                         </CardTitle>
                         <Col sm={{ size: 4, push: 0, pull: 0 }} className={Style.cardSpec}>
                             {product.specifications.map(spec => {

@@ -2,11 +2,10 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Col } from 'reactstrap';
 
-import Filter from '../filter/filter';
+import Filter from './filter';
 import Pagination from '../pagination/pagination';
 import ProductCard from './productCard';
 import Style from '../main.scss';
-import Layout from '../layout/layout';
 
 
 class category extends React.Component {
@@ -29,7 +28,7 @@ class category extends React.Component {
     render() {
         const categ = this.props.Category;
         return (
-            <Layout>
+            <div>
                 <h1 className="display-4">{categ.name}</h1>
                 <Col sm="8" className={Style.martop}>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -50,7 +49,7 @@ class category extends React.Component {
                 <Col sm="4">
                     <Filter products={categ.products} />
                 </Col>
-            </Layout>
+            </div>
         );
     }
 }

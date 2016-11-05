@@ -7,7 +7,8 @@ import Layout from '../layout/layout';
 import Style from '../main.scss';
 import handleImage from '../handleImage';
 
-class catalog extends React.Component {
+
+class Catalog extends React.Component {
 
     render() {
         const categories = this.props.viewer.categories;
@@ -17,7 +18,7 @@ class catalog extends React.Component {
                 <CardDeck className={Style.martop}>
                     {categories.map(category => (
                         <Col sm="3" key={category.categoryId} className={Style.card}>
-                            <Link to={`/category/${category.categoryId}`}>
+                            <Link to={`/category/${category.__dataID__}`}>
                                 <Card block outline color="info">
                                     <CardTitle>{category.name}</CardTitle>
                                     <CardImg top width="100%" src={ category.ico !== null ? handleImage(category.ico) : '/images/noImage.png'} alt='ico' />
@@ -31,11 +32,11 @@ class catalog extends React.Component {
     }
 }
 
-catalog.propTypes = {
+Catalog.propTypes = {
     viewer: React.PropTypes.object.isRequired
 };
 
-export default Relay.createContainer(catalog, {
+export default Relay.createContainer(Catalog, {
     fragments: {
         viewer: () => Relay.QL`
             fragment on Viewer {

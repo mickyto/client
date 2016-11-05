@@ -3,7 +3,6 @@ import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Col,
     ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Search from './search';
 
-
 class Header extends React.Component {
 
     constructor(props) {
@@ -13,7 +12,8 @@ class Header extends React.Component {
         this.languageToggle = this.languageToggle.bind(this);
         this.state = {
             currencyOpen: false,
-            languageOpen: false
+            languageOpen: false,
+            currentLang: 'Language'
         };
     }
 
@@ -26,6 +26,12 @@ class Header extends React.Component {
     languageToggle() {
         this.setState({
             languageOpen: !this.state.languageOpen
+        });
+    }
+
+    setLang(lang) {
+        this.setState({
+            currentLang: lang
         });
     }
 
@@ -55,11 +61,11 @@ class Header extends React.Component {
                 </ButtonDropdown>
                 <ButtonDropdown isOpen={this.state.languageOpen} toggle={this.languageToggle}>
                     <DropdownToggle caret>
-                        Language
+                        {this.state.currentLang}
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem>ru</DropdownItem>
-                        <DropdownItem>en</DropdownItem>
+                        <DropdownItem onClick={() => this.setLang('Russian')}>Russian</DropdownItem>
+                        <DropdownItem onClick={() => this.setLang('English')}>English</DropdownItem>
                     </DropdownMenu>
                 </ButtonDropdown>
             </Navbar>

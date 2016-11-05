@@ -13,6 +13,7 @@ import Reviews from './reviews';
 import UserReview from './userReview';
 import handleImage from '../handleImage';
 
+
 class Product extends React.Component {
 
     render() {

@@ -1,9 +1,9 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-import Header from '../header/header';
-import Style from './vendor.scss';
+import Header from '../layout/header';
 import handleImage from '../handleImage';
+
 
 class Vendor extends React.Component {
 

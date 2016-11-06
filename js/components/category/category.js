@@ -43,11 +43,11 @@ class category extends React.Component {
                         </DropdownMenu>
                     </Dropdown>
                     <hr className="my-2" />
-                    <ProductCard products={categ.products} />
+                    <ProductCard products={categ.products.edges} />
                     <Pagination />
                 </Col>
                 <Col sm="4">
-                    <Filter products={categ.products} />
+                    <Filter products={categ.products.edges} />
                 </Col>
             </div>
         );
@@ -63,43 +63,47 @@ export default Relay.createContainer(category, {
         Category: () => Relay.QL`
             fragment on Category {
                 name
-                products {
-                    productId
-                    model
-                    description
-                    vendor {
-                        name
-                    }
-                    front_image {
-                        src
-                    }
-                    specifications {
-                        property {
-                            name
-                        }
-                        unit {
-                            abbreviation
-                        }
-                        value {
-                            ... on SpecEnumType {
-                                default_value {
+                products(first: 10) {
+                    edges {
+                        node {
+                            productId
+                            model
+                            description
+                            vendor {
+                                name
+                            }
+                            front_image {
+                                src
+                            }
+                            specifications {
+                                property {
                                     name
                                 }
-                            }
-                            ... on SpecIntType {
-                                value
-                            }
-                            ... on SpecSetType {
-                                default_values {
-                                    name
+                                unit {
+                                    abbreviation
                                 }
-                            }
-                            ... on SpecPeriodType {
-                                to
-                                from
-                            }
-                            ... on SpecDualType {
-                                true
+                                value {
+                                    ... on SpecEnumType {
+                                        default_value {
+                                            name
+                                        }
+                                    }
+                                    ... on SpecIntType {
+                                        value
+                                    }
+                                    ... on SpecSetType {
+                                        default_values {
+                                            name
+                                        }
+                                    }
+                                    ... on SpecPeriodType {
+                                        to
+                                        from
+                                    }
+                                    ... on SpecDualType {
+                                        true
+                                    }
+                                }
                             }
                         }
                     }

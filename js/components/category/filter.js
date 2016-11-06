@@ -17,8 +17,8 @@ class filter extends React.Component {
         let vendors = [];
         props.products.map(
             product => {
-                if (!this.inArray(vendors, product.vendor.name)) {
-                    vendors.push(product.vendor.name);
+                if (!this.inArray(vendors, product.node.vendor.name)) {
+                    vendors.push(product.node.vendor.name);
                 }
             }
         );

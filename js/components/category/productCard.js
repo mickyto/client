@@ -9,19 +9,21 @@ import handleImage from '../handleImage';
 class ProductCard extends React.Component {
     
     render() {
+        console.log(this.props);
+
         return (
             <div>
                 {this.props.products.map(product => (
-                    <Card block outline color="info" key={product.productId}>
+                    <Card block outline color="info" key={product.node.productId}>
                         <div className={Style.image}>
                             <span></span>
-                            <img src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt="front" />
+                            <img src={ product.node.front_image !== null ? handleImage(product.node.front_image.src) : '/images/noImage.png' } alt="front" />
                         </div>
                         <CardTitle>
-                            <Link to={`/product/${product.productId}`}>{`${product.vendor.name} ${product.model}`}</Link>
+                            <Link to={`/product/${product.node.productId}`}>{`${product.node.vendor.name} ${product.node.model}`}</Link>
                         </CardTitle>
                         <Col sm={{ size: 4, push: 0, pull: 0 }} className={Style.cardSpec}>
-                            {product.specifications.map(spec => {
+                            {product.node.specifications.map(spec => {
                                 if (spec.value.true === 'no') {
                                     return
                                 }
@@ -60,7 +62,7 @@ class ProductCard extends React.Component {
                                 <h6>Add to compare</h6>
                             </Col>
                         </Col>
-                        <CardText>{product.description}</CardText>
+                        <CardText>{product.node.description}</CardText>
                     </Card>
                 ))}
             </div>

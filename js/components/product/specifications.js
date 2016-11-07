@@ -2,12 +2,13 @@ import React from 'react';
 import { Table, Card } from 'reactstrap';
 
 import Style from '../main.scss';
+import { t } from '../../translator'
 
 class specifications extends React.Component {
     render() {
         return (
             <div>
-                <h1 className="display-5">Specifications</h1>
+                <h1 className="display-5">{t('specifications')}</h1>
                 <br />
                 <Card block outline color="info">
                 <Table hover className={Style.table}>

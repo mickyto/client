@@ -27,9 +27,32 @@ export const dictionary = {
         blog: 'Блог',
         help: 'Помощь',
         languages: 'Языки',
-        subscribe: 'Подписаться'
+        subscribe: 'Подписаться',
+
+        // category
+
+        sortBy: 'Сортировать по',
+        price: 'цене',
+        popularity: 'популярности',
+        rating: 'рейтингу',
+        novelty: 'новизне',
+        addToCompare: 'Добавить к сравнению',
+
+        // product
+
+        prices: 'Цены',
+        cloneTo: 'Скопировать в свой аккаунт',
+        customerReviews: 'оценки покупателей',
+        specifications: 'Спецификации',
+        features: 'Особенности',
+        reviews: 'Отзывы',
+        addReviewFor: 'Добавить отзыв для',
+        addReview: 'Добавить отзыв',
+        utility: 'Полезность',
+        priceAndQuality: 'Цена и качество'
 
 
+        
     },
 
     en_EN: {
@@ -59,15 +82,32 @@ export const dictionary = {
         blog: 'Blog',
         help: 'Help',
         languages: 'Languages',
-        subscribe: 'Subscribe'
+        subscribe: 'Subscribe',
+
+        // category
+
+        sortBy: 'Sort by',
+        price: 'price',
+        popularity: 'popularity',
+        rating: 'rating',
+        novelty: 'novelty',
+        addToCompare: 'Add to compare',
+
+        // product
+
+        prices: 'prices',
+        cloneTo: 'Clone to your account',
+        customerReviews: 'customer reviews',
+        specifications: 'Specifications',
+        features: 'Features',
+        reviews: 'Reviews',
+        addReviewFor: 'Add review for',
+        addReview: 'Add review',
+        utility: 'Utility',
+        priceAndQuality: 'Price and quality'
 
 
-
-
-
-
-
-}
+    }
 };
 
 

@@ -5,6 +5,7 @@ import { Card, CardImg, CardDeck, CardTitle, Col} from 'reactstrap';
 
 import Style from '../main.scss';
 import handleImage from '../handleImage';
+import { t } from '../../translator'
 
 
 class Catalog extends React.Component {
@@ -13,7 +14,7 @@ class Catalog extends React.Component {
         const categories = this.props.viewer.categories;
         return (
             <div>
-                <h1 className="display-4">Catalog</h1>
+                <h1 className="display-4">{t('catalog')}</h1>
                 <CardDeck className={Style.martop}>
                     {categories.map(category => (
                         <Col sm="3" key={category.categoryId} className={Style.card}>

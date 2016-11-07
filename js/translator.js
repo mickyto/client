@@ -18,7 +18,7 @@ export const t = (word) => {
         const currentLang = cookie.load('locale');
 
         if (!dictionary[currentLang.alias][word])
-            console.log(`Warning: We do not have translation for word '${word}'`);
+            console.log(`~~~~~~~~~~~ Warning: We do not have translation for word '${word}' ~~~~~~~~~~~~~~~~`);
         return dictionary[currentLang.alias][word]
     }
     else {

@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Button, Row} from 'reactstr
 import classnames from 'classnames';
 
 import PriceTable from './priceTable';
+import { t } from '../../translator'
 
 class prices extends React.Component {
 
@@ -26,7 +27,7 @@ class prices extends React.Component {
     render() {
         return (
             <div>
-            <h1 className="display-5">Prices</h1>
+            <h1 className="display-5">{t('prices')}</h1>
                 <Nav tabs>
                     <NavItem>
                         <NavLink className={classnames({ active: this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }} >
@@ -64,7 +65,7 @@ class prices extends React.Component {
                         </Row>
                     </TabPane>
                 </TabContent>
-                <Button size="lg" color="secondary">Add store free</Button>
+                <Button size="lg" color="secondary">{t('addStoreFree')}</Button>
             </div>
 
         );

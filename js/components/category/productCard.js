@@ -4,6 +4,7 @@ import { CardText, Col, Card, Input, CardTitle } from 'reactstrap';
 
 import Style from '../main.scss';
 import handleImage from '../handleImage';
+import { t } from '../../translator'
 
 class ProductCard extends React.Component {
     
@@ -58,7 +59,7 @@ class ProductCard extends React.Component {
                             })}
                             <Col>
                                 <Input type="checkbox" />
-                                <h6>Add to compare</h6>
+                                <h6>{t('addToCompare')}</h6>
                             </Col>
                         </Col>
                         <CardText>{product.node.description}</CardText>

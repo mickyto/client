@@ -6,6 +6,7 @@ import Filter from './filter';
 import Pagination from '../pagination/pagination';
 import ProductCard from './productCard';
 import Style from '../main.scss';
+import { t } from '../../translator'
 
 
 class category extends React.Component {
@@ -33,13 +34,13 @@ class category extends React.Component {
                 <Col sm="8" className={Style.martop}>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                         <DropdownToggle caret>
-                            Sort by
+                            {t('sortBy')}
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>Price</DropdownItem>
-                            <DropdownItem>Popularity</DropdownItem>
-                            <DropdownItem>Rating</DropdownItem>
-                            <DropdownItem>Novelty</DropdownItem>
+                            <DropdownItem>{t('price')}</DropdownItem>
+                            <DropdownItem>{t('popularity')}</DropdownItem>
+                            <DropdownItem>{t('rating')}</DropdownItem>
+                            <DropdownItem>{t('novelty')}</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                     <hr className="my-2" />

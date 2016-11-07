@@ -2,7 +2,9 @@ import React from 'react';
 import FaStar from 'react-icons/lib/fa/star'
 import { Table, Container, Col, Row} from 'reactstrap';
 import FaStarO from 'react-icons/lib/fa/star-o'
+
 import Style from '../main.scss';
+import { t } from '../../translator'
 
 class userReview extends React.Component {
 
@@ -29,11 +31,11 @@ class userReview extends React.Component {
                     <Table size="sm" className={Style.table}>
                         <tbody>
                         <tr>
-                            <th>Utility</th>
+                            <th>{t('utility')}</th>
                             <td>4/5</td>
                         </tr>
                         <tr>
-                        <th>Price and quality</th>
+                        <th>{t('priceAndQuality')}</th>
                             <td>4/5</td>
                         </tr>
                         </tbody>

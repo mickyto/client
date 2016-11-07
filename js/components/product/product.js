@@ -11,6 +11,7 @@ import Features from './features';
 import Reviews from './reviews';
 import UserReview from './userReview';
 import handleImage from '../handleImage';
+import { t } from '../../translator'
 
 
 class Product extends React.Component {
@@ -46,7 +47,7 @@ class Product extends React.Component {
                     <Prices />
                 </Col>
                 <Col sm="3">
-                    <Button block color="primary">Clone to your account</Button>
+                    <Button block color="primary">{t('cloneTo')}</Button>
                     <br />
                     <Jumbotron>
                         <h1 className="display-3">Some add</h1>
@@ -82,7 +83,7 @@ class Product extends React.Component {
                 <br />
                 <Row>
                     <Col sm="9">
-                        <Reviews />
+                        <Reviews productName={`${product.vendor.name} ${product.model}`} />
                     </Col>
                 </Row>
                 <br />

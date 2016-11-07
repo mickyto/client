@@ -4,17 +4,8 @@ import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Col,
     ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import Search from './search';
-import { header } from '../../dictionary'
+import { t, locales } from '../../translator'
 
-const availableLocales = [
-    {
-        alias: 'en_EN',
-        name: 'English'
-    }, {
-        alias: 'ru_RU',
-        name: 'Русский'
-    }
-];
 
 class Header extends React.Component {
 
@@ -42,17 +33,16 @@ class Header extends React.Component {
         });
     }
 
-    setLang(lang) {
+    setLang(locale) {
         this.setState({
-            currentLang: lang
+            currentLang: locale
         });
-        cookie.save('locale', lang, { path: '/' });
+        cookie.save('locale', locale, { path: '/' });
+        window.location.reload()
     }
 
     render() {
 
-        const lang = this.state.currentLang.alias;
-        console.log(lang);
         return (
             <Navbar color="faded" light>
                 <Col sm="4" md={{ size: 2, offset: 0 }}>
@@ -60,20 +50,20 @@ class Header extends React.Component {
                 </Col>
                 <Nav navbar>
                     <NavItem>
-                        <NavLink href="/">{header[lang].home}</NavLink>
+                        <NavLink href="/">{t('home')}</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/catalog">Catalog</NavLink>
+                        <NavLink href="/catalog">{t('catalog')}</NavLink>
                     </NavItem>
                 </Nav>
                 <Search />
                 <ButtonDropdown isOpen={this.state.currencyOpen} toggle={this.currencyToggle}>
                     <DropdownToggle caret>
-                        Currency
+                        {t('currency')}
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem>rub</DropdownItem>
-                        <DropdownItem>usd</DropdownItem>
+                        <DropdownItem>{t('ruble')}</DropdownItem>
+                        <DropdownItem>{t('dollar')}</DropdownItem>
                     </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown isOpen={this.state.languageOpen} toggle={this.languageToggle}>
@@ -81,7 +71,7 @@ class Header extends React.Component {
                         {this.state.currentLang.name}
                     </DropdownToggle>
                     <DropdownMenu>
-                        {availableLocales.map(locale => (
+                        {locales.map(locale => (
                             <div key={locale.name}>
                                 <DropdownItem onClick={() => this.setLang(locale)}>{locale.name}</DropdownItem>
                             </div>

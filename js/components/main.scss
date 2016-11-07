@@ -14,7 +14,12 @@
 .mobIcon {
   width: 60px;
   height: 60px;
-  color: dimgray;
+  color: slategray;
+  cursor: pointer;
+
+  &:hover {
+    color: darkslategray;
+  }
 }
 
 

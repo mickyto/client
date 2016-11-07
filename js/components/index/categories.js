@@ -1,12 +1,14 @@
 import React from 'react';
 import { Button, ButtonGroup, Col } from 'reactstrap';
 
+import { t } from '../../translator'
+
 class Categories extends React.Component {
 
     render() {
         const categories = this.props.categories;
         return (
-            <Col sm={{ size: 2, offset: 0 }}>
+            <Col xs="2">
                 <ButtonGroup vertical>
                     {categories.map(category => (
                         <Button outline color="primary" size="lg" key={category.categoryId} href={`/category/${category.categoryId}`}>
@@ -15,7 +17,7 @@ class Categories extends React.Component {
                     ))}
                 </ButtonGroup>
                 <hr className="my-2" />
-                <Button color="info" href="/catalog" outline size="lg">All categories</Button>{' '}
+                <Button color="info" href="/catalog" outline size="lg">{t('allCategories')}</Button>{' '}
             </Col>
         );
     }

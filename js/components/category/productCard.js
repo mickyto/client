@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { CardText, DropdownToggle, DropdownMenu, DropdownItem,
-    Container, Col, Media, Card, Row, Input, CardTitle } from 'reactstrap';
+import { CardText, Col, Card, Input, CardTitle } from 'reactstrap';
 
 import Style from '../main.scss';
 import handleImage from '../handleImage';

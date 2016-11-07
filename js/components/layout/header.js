@@ -1,7 +1,20 @@
 import React from 'react';
+import cookie from 'react-cookie';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Col,
     ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 import Search from './search';
+import { header } from '../../dictionary'
+
+const availableLocales = [
+    {
+        alias: 'en_EN',
+        name: 'English'
+    }, {
+        alias: 'ru_RU',
+        name: 'Русский'
+    }
+];
 
 class Header extends React.Component {
 
@@ -13,7 +26,7 @@ class Header extends React.Component {
         this.state = {
             currencyOpen: false,
             languageOpen: false,
-            currentLang: 'Language'
+            currentLang: cookie.load('locale') || { name: 'Language', alias: 'en_EN' }
         };
     }
 
@@ -33,9 +46,13 @@ class Header extends React.Component {
         this.setState({
             currentLang: lang
         });
+        cookie.save('locale', lang, { path: '/' });
     }
 
     render() {
+
+        const lang = this.state.currentLang.alias;
+        console.log(lang);
         return (
             <Navbar color="faded" light>
                 <Col sm="4" md={{ size: 2, offset: 0 }}>
@@ -43,7 +60,7 @@ class Header extends React.Component {
                 </Col>
                 <Nav navbar>
                     <NavItem>
-                        <NavLink href="/">Home</NavLink>
+                        <NavLink href="/">{header[lang].home}</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink href="/catalog">Catalog</NavLink>
@@ -61,12 +78,12 @@ class Header extends React.Component {
                 </ButtonDropdown>
                 <ButtonDropdown isOpen={this.state.languageOpen} toggle={this.languageToggle}>
                     <DropdownToggle caret>
-                        {this.state.currentLang}
+                        {this.state.currentLang.name}
                     </DropdownToggle>
                     <DropdownMenu>
-                        {this.props.locales.map(({name}) => (
-                            <div key={name}>
-                                <DropdownItem onClick={() => this.setLang(name)}>{name}</DropdownItem>
+                        {availableLocales.map(locale => (
+                            <div key={locale.name}>
+                                <DropdownItem onClick={() => this.setLang(locale)}>{locale.name}</DropdownItem>
                             </div>
                         ))}
                     </DropdownMenu>

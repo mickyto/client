@@ -12,7 +12,7 @@ import Viewer from './viewer';
 import Queries from './queries';
 
 export default (
-    <Route path='/' component={Layout} queries={Viewer}>
+    <Route path='/' component={Layout}>
         <IndexRoute component={Index} queries={Viewer} />
         <Route path='/catalog' component={Catalog} queries={Viewer} />
         <Route path='/category/:id' component={Category} queries={Queries.category} />

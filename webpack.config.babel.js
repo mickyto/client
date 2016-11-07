@@ -32,13 +32,7 @@ if (config.env === 'production') {
             filename: path.join(__dirname, 'public', 'index.html'),
             template: path.join(__dirname, 'templates', 'src.html'),
             mobile: true,
-            inject: false,
-            links: [
-                {
-                    href: '/index.css',
-                    rel: 'stylesheet'
-                }
-            ]
+            inject: false
         })
     ];
 } else {
@@ -66,12 +60,6 @@ if (config.env === 'production') {
             excludeChunks: [
                 'app',
                 'vendor'
-            ],
-            links: [
-                {
-                    href: '/index.css',
-                    rel: 'stylesheet'
-                }
             ]
         })
     ];

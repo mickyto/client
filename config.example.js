@@ -5,6 +5,6 @@ const config = {
     imageServer: 'http://im.skukit-st.com/'
 };
 
-export default config
+export default config;
 
 

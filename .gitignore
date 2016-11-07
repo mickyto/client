@@ -5,3 +5,4 @@ data/schema.graphql
 /public/vendor*
 /public/index.html
 /config.js
+shipitfile\.*\.js

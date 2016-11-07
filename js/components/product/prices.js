@@ -2,7 +2,7 @@ import React from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Button, Row} from 'reactstrap';
 import classnames from 'classnames';
 
-import PriceTable from './PriceTable';
+import PriceTable from './priceTable';
 
 class prices extends React.Component {
 

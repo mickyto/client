@@ -4,9 +4,9 @@ import { Row } from 'reactstrap';
 
 import Categories from './categories';
 import Vendors from '../vendors/vendors';
-import Description from './Description';
-import Motivation from './Motivation';
-import New from './New';
+import Description from './description';
+import Motivation from './motivation';
+import New from './new';
 import Style from '../main.scss';
 
 

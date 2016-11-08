@@ -12,5 +12,15 @@ export default {
 
     product: {
         Product: () => Relay.QL`query { product (id: $id) }`
+    },
+
+    viewer: {
+        viewer: (Component) => Relay.QL`
+            query {
+                viewer (locale: $locale) {
+                    ${Component.getFragment('viewer')}
+                }
+            }
+        `
     }
 };

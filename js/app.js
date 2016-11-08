@@ -13,7 +13,14 @@ Relay.injectNetworkLayer(
         retryDelays: [5000]
     })
 );
+
 ReactDOM.render(
-    <Router history={browserHistory} routes={routes} render={applyRouterMiddleware(useRelay)} environment={Relay.Store} />,
+    <Router
+        history={browserHistory}
+        renderLoading={() => <div>Loading...</div> }
+        routes={routes}
+        render={applyRouterMiddleware(useRelay)}
+        environment={Relay.Store}
+    />,
     document.getElementById('root')
 );

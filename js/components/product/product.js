@@ -66,7 +66,7 @@ class Product extends React.Component {
                         </Container>
                         <br />
                         <Col sm="6">
-                            <Specifications specs={product.specifications} />
+                            <Specifications productSpecs={product} />
                         </Col>
                         <Col sm="6">
                             <Features />
@@ -114,36 +114,7 @@ export default Relay.createContainer(Product, {
                 front_image {
                     src
                 }
-                specifications {
-                    property {
-                        name
-                    }
-                    unit {
-                        abbreviation
-                    }
-                    value {
-                        ... on SpecEnumType {
-                            default_value {
-                                name
-                            }
-                        }
-                        ... on SpecIntType {
-                            value
-                        }
-                        ... on SpecSetType {
-                            default_values {
-                                name
-                            }
-                        }
-                        ... on SpecPeriodType {
-                            to
-                            from
-                        }
-                        ... on SpecDualType {
-                            true
-                        }
-                    }
-                }
+                ${Specifications.getFragment('productSpecs')}
             }
         `
     }

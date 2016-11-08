@@ -1,10 +1,11 @@
 import React from 'react';
+import Relay from 'react-relay';
 import { Table, Card } from 'reactstrap';
 
 import Style from '../main.scss';
 import { t } from '../../translator'
 
-class specifications extends React.Component {
+class Specifications extends React.Component {
     render() {
         return (
             <div>
@@ -18,7 +19,7 @@ class specifications extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.specs.map(spec => (
+                    {this.props.productSpecs.specifications.map(spec => (
 
                     <tr key={spec.property.name}>
                         
@@ -69,7 +70,45 @@ class specifications extends React.Component {
     }
 }
 
-export default specifications;
+export default Relay.createContainer(Specifications, {
+    fragments: {
+        productSpecs: () => Relay.QL`
+            fragment on Product {
+                specifications {
+                    property {
+                        name
+                    }
+                    unit {
+                        abbreviation
+                    }
+                    value {
+                        ... on SpecEnumType {
+                            default_value {
+                                name
+                            }
+                        }
+                        ... on SpecIntType {
+                            value
+                        }
+                        ... on SpecSetType {
+                            default_values {
+                                name
+                            }
+                        }
+                        ... on SpecPeriodType {
+                            to
+                            from
+                        }
+                        ... on SpecDualType {
+                            true
+                        }
+                    }
+                }
+            }
+        `
+    }
+});
+
 
 
 

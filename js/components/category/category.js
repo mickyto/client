@@ -27,7 +27,7 @@ class category extends React.Component {
     }
 
     render() {
-        const categ = this.props.Category;
+        const categ = this.props.viewer.category;
         return (
             <div>
                 <h1 className="display-4">{categ.name}</h1>
@@ -55,54 +55,57 @@ class category extends React.Component {
     }
 }
 
-category.propTypes = {
-    Category: React.PropTypes.object.isRequired
-};
-
 export default Relay.createContainer(category, {
+
+    initialVariables: {
+        id: null
+    },
+
     fragments: {
-        Category: () => Relay.QL`
-            fragment on Category {
-                name
-                products(first: 10) {
-                    edges {
-                        node {
-                            productId
-                            model
-                            description
-                            vendor {
-                                name
-                            }
-                            front_image {
-                                src
-                            }
-                            specifications {
-                                property {
+        viewer: () => Relay.QL`
+            fragment on Viewer {
+                category( id: $id ) {
+                    name
+                    products(first: 10) {
+                        edges {
+                            node {
+                                productId
+                                model
+                                description
+                                vendor {
                                     name
                                 }
-                                unit {
-                                    abbreviation
+                                front_image {
+                                    src
                                 }
-                                value {
-                                    ... on SpecEnumType {
-                                        default_value {
-                                            name
+                                specifications {
+                                    property {
+                                        name
+                                    }
+                                    unit {
+                                        abbreviation
+                                    }
+                                    value {
+                                        ... on SpecEnumType {
+                                            default_value {
+                                                name
+                                            }
                                         }
-                                    }
-                                    ... on SpecIntType {
-                                        value
-                                    }
-                                    ... on SpecSetType {
-                                        default_values {
-                                            name
+                                        ... on SpecIntType {
+                                            value
                                         }
-                                    }
-                                    ... on SpecPeriodType {
-                                        to
-                                        from
-                                    }
-                                    ... on SpecDualType {
-                                        true
+                                        ... on SpecSetType {
+                                            default_values {
+                                                name
+                                            }
+                                        }
+                                        ... on SpecPeriodType {
+                                            to
+                                            from
+                                        }
+                                        ... on SpecDualType {
+                                            true
+                                        }
                                     }
                                 }
                             }

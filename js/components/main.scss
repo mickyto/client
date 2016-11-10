@@ -9,6 +9,13 @@
   padding: 20px;
 
 
+  a {
+    color: #798099;
+
+    &:hover {
+      color: darkslategray
+    }
+  }
 }
 
 .mobIcon {

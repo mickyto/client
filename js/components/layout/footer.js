@@ -28,16 +28,16 @@ class Footer extends React.Component {
                         <Col sm="3" className="text-xs-center">
                             <Nav>
                                 <NavItem>
-                                    <NavLink href="#">{t('aboutUs')}</NavLink>
+                                    <NavLink href="/about">{t('aboutUs')}</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href="#">{t('blog')}</NavLink>
+                                    <NavLink href="/blog">{t('blog')}</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href="#">{t('help')}</NavLink>
+                                    <NavLink href="/help">{t('help')}</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href="#">FAQ</NavLink>
+                                    <NavLink href="/faq">FAQ</NavLink>
                                 </NavItem>
                             </Nav>
                         </Col>

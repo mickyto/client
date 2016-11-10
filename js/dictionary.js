@@ -49,8 +49,10 @@ export const dictionary = {
         addReviewFor: 'Добавить отзыв для',
         addReview: 'Добавить отзыв',
         utility: 'Полезность',
-        priceAndQuality: 'Цена и качество'
+        priceAndQuality: 'Цена и качество',
 
+
+        noMatch: 'К сожалению эта страница еще не создана. Возможно вы найдете другие страницы более полезными'
 
         
     },
@@ -104,7 +106,10 @@ export const dictionary = {
         addReviewFor: 'Add review for',
         addReview: 'Add review',
         utility: 'Utility',
-        priceAndQuality: 'Price and quality'
+        priceAndQuality: 'Price and quality',
+
+
+        noMatch: 'Sorry, this page is not setup yet, you may find the other pages useful.'
 
 
     }

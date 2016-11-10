@@ -17,7 +17,8 @@ import { t } from '../../translator'
 class Product extends React.Component {
 
     render() {
-        const product = this.props.Product;
+        console.log(this.props.viewer)
+        const product = this.props.viewer.product;
         return (
             <div>
                 <h1 className="display-4">{`${product.vendor.name} ${product.model}`}</h1>
@@ -97,24 +98,28 @@ class Product extends React.Component {
     }
 }
 
-Product.propTypes = {
-    Product: React.PropTypes.object.isRequired
-};
-
 export default Relay.createContainer(Product, {
-    fragments: {
-        Product: () => Relay.QL`
-            fragment on Product {
-                productId
-                model
-                description
-                vendor {
-                    name
+
+    initialVariables: {
+        id: null
+    },
+    
+    fragments:  {
+        viewer: (id) => Relay.QL`
+            fragment on Viewer {
+                product( id: $id ) {
+                    productId
+                    model
+                    description
+                    vendor {
+                        name
+                    }
+                    front_image {
+                        src
+
+                    }
+                    ${Specifications.getFragment('productSpecs')}
                 }
-                front_image {
-                    src
-                }
-                ${Specifications.getFragment('productSpecs')}
             }
         `
     }

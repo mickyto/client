@@ -7,7 +7,7 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <Col xs="6">
+                <Col xs="8">
                     <InputGroup>
                         <Input />
                         <InputGroupButton color="secondary">{t('search')}</InputGroupButton>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^6.5.0",
+    "axios": "^0.15.2",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.1.0",
@@ -27,7 +28,6 @@
     "graphql": "^0.7.2",
     "html-webpack-plugin": "^2.22.0",
     "if-env": "^1.0.0",
-    "node-fetch": "^1.6.3",
     "postcss-loader": "^0.13.0",
     "precss": "^1.4.0",
     "react": "^15.3.1",

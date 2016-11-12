@@ -8,6 +8,9 @@ export const dictionary = {
         currency: 'Валюта',
         ruble: 'рубль',
         dollar: 'доллар',
+        login: 'Войти',
+        signup: 'Регистрация',
+        logout: 'Выйти',
         
         // index
         
@@ -51,6 +54,16 @@ export const dictionary = {
         utility: 'Полезность',
         priceAndQuality: 'Цена и качество',
 
+        // log in / sign up
+
+        password: 'Пароль',
+        loginOrEmail: 'Логин или email',
+        haveNoAccount: 'Уже есть аккаунт?',
+        tooShort: 'Длина поля не верна',
+        Login: 'Логин',
+        haveAccount: 'Уже есть аккаунт?',
+
+
 
         noMatch: 'К сожалению эта страница еще не создана. Возможно вы найдете другие страницы более полезными'
 
@@ -65,6 +78,9 @@ export const dictionary = {
         currency: 'Currency',
         ruble: 'ruble',
         dollar: 'dollar',
+        login: 'Log in',
+        signup: 'Sign up',
+        logout: 'Log out',
         
         // index
         
@@ -107,6 +123,17 @@ export const dictionary = {
         addReview: 'Add review',
         utility: 'Utility',
         priceAndQuality: 'Price and quality',
+
+        // log in / sign up
+
+        password: 'Password',
+        loginOrEmail: 'Login or email',
+        haveNoAccount: 'Have no an account yet?',
+        tooShort: 'Length of field is invalid',
+        Login: 'Login',
+        haveAccount: 'Already have an account?',
+
+
 
 
         noMatch: 'Sorry, this page is not setup yet, you may find the other pages useful.'

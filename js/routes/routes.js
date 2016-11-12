@@ -10,6 +10,9 @@ import Catalog from '../components/catalog/catalog';
 import Layout from '../components/layout/layout';
 import Viewer from './viewer';
 import NoMatch from '../components/noMatch/noMatch'
+import Login from '../components/gate/login';
+import Signup from '../components/gate/signup';
+import Profile from '../components/profile/profile';
 
 
 function prepareParams(params, { location }) {
@@ -27,6 +30,9 @@ export default (
         <Route path='/category/:id' component={Category} queries={Viewer} prepareParams={prepareParams} />
         <Route path='/vendor/:id' component={Vendor} queries={Viewer} prepareParams={prepareParams} />
         <Route path='/product/:id' component={Product} queries={Viewer} prepareParams={prepareParams} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/profile' component={Profile} />
         <Route path="*" component={NoMatch}/>
     </Route>
 );

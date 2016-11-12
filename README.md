@@ -70,3 +70,7 @@ If at any time you make changes in `schema.js` on remote graphql server, regener
     docker restart client
 ```
 
+## Useful for read
+
+[relay examples](https://github.com/relayjs/relay-examples)
+[relay-fullstack example](https://github.com/lvarayut/relay-fullstack)

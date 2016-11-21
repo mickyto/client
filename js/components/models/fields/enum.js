@@ -50,7 +50,7 @@ class Enum extends React.Component {
         axios.post(`${config.apiUrl}events?api_token=${cookie.load('userToken')}`, {
                 action: 'update',
                 element_type: 'product',
-                element_id: this.props.data.product,
+                element_id: this.props.product,
                 field: 'specifications',
                 data: {
                     value: {
@@ -65,6 +65,7 @@ class Enum extends React.Component {
 
     render() {
         const prop = this.props.prop;
+        console.log(this.props)
         return (
             <table className={Style.period}>
                 <tbody>

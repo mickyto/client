@@ -1,23 +1,21 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { Jumbotron, Button, CardDeck, Card,
-    Container, Col, Row } from 'reactstrap';
+import { Jumbotron, Button, Container, Col, Row } from 'reactstrap';
 
 import Style from '../main.scss';
+import Images from './images';
 import Prices from './prices';
 import Review from './review';
 import Specifications from './specifications';
 import Features from './features';
 import Reviews from './reviews';
 import UserReview from './userReview';
-import handleImage from '../handleImage';
 import { t } from '../../translator'
 
 
 class Product extends React.Component {
 
     render() {
-        console.log(this.props.viewer.product)
         const product = this.props.viewer.product;
         return (
             <div>
@@ -25,21 +23,14 @@ class Product extends React.Component {
                 <p>SKUKIT ID: {product.productId}</p>
                 <Row>
                     <Col sm="5" className={Style.martop}>
-                        <img width="430" src={ product.front_image !== null ? handleImage(product.front_image.src) : '/images/noImage.png' } alt='front' />
-                        <Col sm="12" className={Style.martop}>
-                            <CardDeck>
-                                {product.images.map(image => (
-                                    <Card width="100" key={image.__dataID__}>
-                                        <img width="100" src={ image !== null ? handleImage(image.src) : '/images/noImage.png' } alt='front' />
-                                    </Card>
-                                ))}
-                            </CardDeck>
-                        </Col>
+                        <Images images={product} />
                     </Col>
                     <Col sm="4">
                         <Prices />
                     </Col>
                     <Col sm="3">
+                        <Button href={`/profile/models/${product.productId}/specifications`} block color="warning">{t('editProduct')}</Button>
+                        <br />
                         <Button block color="primary">{t('cloneTo')}</Button>
                         <br />
                         <Jumbotron>
@@ -97,7 +88,7 @@ export default Relay.createContainer(Product, {
     },
 
     fragments:  {
-        viewer: (id) => Relay.QL`
+        viewer: id => Relay.QL`
             fragment on Viewer {
                 product( id: $id ) {
                     productId
@@ -106,12 +97,7 @@ export default Relay.createContainer(Product, {
                     vendor {
                         name
                     }
-                    front_image {
-                        src
-                    }
-                    images {
-                        src
-                    }
+                    ${Images.getFragment('images')}
                     ${Specifications.getFragment('productSpecs')}
                 }
             }

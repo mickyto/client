@@ -19,24 +19,19 @@ class Images extends React.Component {
     constructor(props) {
         super(props);
 
-        this.isExtraImage = this.isExtraImage.bind(this);
-        
         this.state = {
             newImage: false
         };
 
+        this.isExtraImage = this.isExtraImage.bind(this);
     }
 
     isExtraImage(bul) {
-        this.setState({
-            newImage: bul
-        })
+        this.setState({ newImage: bul })
     }
 
     render() {
-
         const product = this.props.viewer.product;
-        console.log(product)
         return (
             <div>
                 <Col xs="9">
@@ -61,7 +56,10 @@ class Images extends React.Component {
                             <BreadcrumbItem active tag="span">Images</BreadcrumbItem>
                         </Breadcrumb>
                         <hr className="my-2" />
-                        <h1 className="display-5">{`${product.vendor.name} ${product.model}`}  <Tag>{product.category.name}</Tag></h1>
+                        <a href={`/product/${product.productId}`}>
+                            <h1 className="display-5">{`${product.vendor.name} ${product.model}`}</h1>
+                        </a>
+                        <h2><Tag>{product.category.name}</Tag></h2>
                         <p>SKUKIT ID: {product.productId}</p>
                         <Image image={product.front_image} isFront={'yes'} product={product.productId} relay={this.props.relay} />
                         {product.images.map((image, i) => (

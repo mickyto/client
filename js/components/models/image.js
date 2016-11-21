@@ -136,9 +136,9 @@ class Image extends React.Component {
             <div className={Style.martop}>
                 <Dropzone accept="image/*" multiple={false} className={Style.dropzone} ref="dropzone" onDrop={this.onDrop} >
                     {this.state.image || this.props.image && this.props.image.src ?
-                        <div id="image">
+                        <div style={{width: '380px', height: '380px'}} className={Style.image}>
                             <span></span>
-                            <img src={src} />
+                            <img src={src} style={{maxWidth: '350px', maxHeight: '350px'}} />
                         </div>
                         :
                         <div id="image">

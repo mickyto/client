@@ -46,6 +46,7 @@ export const dictionary = {
 
         prices: 'Цены',
         cloneTo: 'Скопировать в свой аккаунт',
+        editProduct: 'Редактировать продукт',
         customerReviews: 'оценки покупателей',
         specifications: 'Спецификации',
         features: 'Особенности',
@@ -131,6 +132,7 @@ export const dictionary = {
         // product
 
         prices: 'prices',
+        editProduct: 'Edit product',
         cloneTo: 'Clone to your account',
         customerReviews: 'customer reviews',
         specifications: 'Specifications',

@@ -45,7 +45,7 @@ class Integer extends React.Component {
         axios.post(`${config.apiUrl}events?api_token=${cookie.load('userToken')}`, {
                 action: 'update',
                 element_type: 'product',
-                element_id: this.props.data.product,
+                element_id: this.props.product,
                 field: 'specifications',
                 data: {
                     value: this.state.value,

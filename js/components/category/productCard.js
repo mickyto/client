@@ -13,10 +13,12 @@ class ProductCard extends React.Component {
             <div>
                 {this.props.products.map(product => (
                     <Card block outline color="info" key={product.node.productId}>
-                        <div className={Style.image}>
-                            <span></span>
-                            <img src={ product.node.front_image !== null ? handleImage(product.node.front_image.src) : '/images/noImage.png' } alt="front" />
-                        </div>
+                        <Link to={`/product/${product.node.productId}`}>
+                            <div style={{width: '150px', height: '150px'}} className={Style.image}>
+                                <span></span>
+                                <img style={{maxWidth: '150px', maxHeight: '150px'}} src={ product.node.front_image !== null ? handleImage(product.node.front_image.src) : '/images/noImage.png' } alt="front" />
+                            </div>
+                        </Link>
                         <CardTitle>
                             <Link to={`/product/${product.node.productId}`}>{`${product.node.vendor.name} ${product.node.model}`}</Link>
                         </CardTitle>

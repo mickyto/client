@@ -45,8 +45,10 @@ class NewSpecifications extends React.Component {
                             <BreadcrumbItem tag="span">Images</BreadcrumbItem>
                         </Breadcrumb>
                         <hr className="my-2" />
-                        <h1 className="display-5">{`${product.vendor.name} ${product.model}`}  <Tag>{product.category.name}</Tag></h1>
-                        <p>SKUKIT ID: {product.productId}</p>
+                        <a href={`/product/${product.productId}`}>
+                            <h1 className="display-5">{`${product.vendor.name} ${product.model}`}</h1>
+                        </a>
+                        <h2><Tag>{product.category.name}</Tag></h2>                        <p>SKUKIT ID: {product.productId}</p>
                         <Description product={product.productId} data={product.description} />
                         <hr className="my-2" />
                         <SpecificationsForm productSpecs={product} />

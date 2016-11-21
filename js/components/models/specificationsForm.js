@@ -24,31 +24,31 @@ class Specifications extends React.Component {
         this.state = {};
         props.productSpecs.specifications.map(spec => {
             this.state[spec.property.propertyId] = spec.value;
-            this.state[spec.property.propertyId].product = props.productSpecs.productId;
         })
     }
 
     render() {
         const properties = this.props.productSpecs.category.properties;
+        const id = this.props.productSpecs.productId;
         return (
             <div>
                 <p className="lead">{t('specifications')}</p>
                 {properties.map(prop => (
                     <div key={prop.name}>
                         {prop.type === 'PERIOD' &&
-                        <Period prop={prop} data={this.state[prop.propertyId]} />
+                        <Period prop={prop} product={id} data={this.state[prop.propertyId]} />
                         }
                         {prop.type === 'INTEGER' &&
-                        <Integer prop={prop} data={this.state[prop.propertyId]} />
+                        <Integer prop={prop} product={id} data={this.state[prop.propertyId]} />
                         }
                         {prop.type === 'ENUM' &&
-                        <Enum prop={prop} data={this.state[prop.propertyId]} />
+                        <Enum prop={prop} product={id} data={this.state[prop.propertyId]} />
                         }
                         {prop.type === 'DUAL' &&
-                        <Dual prop={prop} data={this.state[prop.propertyId]} />
+                        <Dual prop={prop} product={id} data={this.state[prop.propertyId]} />
                         }
                         {prop.type === 'SET' &&
-                        <Set prop={prop} data={this.state[prop.propertyId]} />
+                        <Set prop={prop} product={id} data={this.state[prop.propertyId]} />
                         }
                     </div>
                 ))}

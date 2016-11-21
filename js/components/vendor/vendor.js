@@ -14,7 +14,7 @@ class Vendor extends React.Component {
                 <Header />
                 <div className={Style.root}>
                     <h1>{vendor.name}</h1>
-                    <img src={handleImage(vendor.logotype)} alt='logotype' />
+                    <img src={handleImage(vendor.logo)} alt='logotype' />
                 </div>
             </div>
         );
@@ -30,7 +30,7 @@ export default Relay.createContainer(Vendor, {
         Vendor: () => Relay.QL`
             fragment on Vendor {
                 name
-                logotype
+                logo
             }
         `,
     }

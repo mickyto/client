@@ -34,7 +34,7 @@ export default Relay.createContainer(index, {
                 vendors {
                     vendorId
                     name
-                    logotype
+                    logo
                 }
                 categories {
                     categoryId

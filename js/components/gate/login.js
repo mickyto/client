@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import { withRouter } from 'react-router';
+import { browserHistory } from 'react-router';
 import { Button, Col, Container, FormGroup, Form,
     Input, FormFeedback, NavLink, Label, Alert } from 'reactstrap';
 
@@ -10,6 +10,12 @@ import config from '../../../config';
 import { t } from '../../translator'
 
 class Login extends React.Component {
+
+    componentDidMount() {
+        if (cookie.load('userToken')) {
+            browserHistory.push('/profile');
+        }
+    }
 
     constructor(props) {
         super(props);
@@ -36,7 +42,7 @@ class Login extends React.Component {
     handlePasswordChange(event) {
         this.setState({
             passwordValue: event.target.value,
-            password: event.target.value.length > 3 ? { state: 'success' } : ''
+            password: event.target.value.length > 7 ? { state: 'success' } : ''
         });
     }
 
@@ -59,16 +65,16 @@ class Login extends React.Component {
         axios.get(`${config.apiUrl}auth?login=${this.state.loginValue}&password=${this.state.passwordValue}`)
             .then(res => {
 
-                cookie.save('userToken', res.data.login, { path: '/' });
-                cookie.save('userName', name, { path: '/' });    
-                this.props.router.push('/profile');
+                cookie.save('userToken', res.data.token, { path: '/' });
+                cookie.save('userName', res.data.login, { path: '/' });
+                browserHistory.push('/profile');
                 window.location.reload();
             })
             .catch(function (error) {
 
                 if (error.response.data.error) {
                     _this.setState({
-                        alert: { visible: true, msg: error.response.data.error.error_msg.split(') ').pop() }
+                        alert: { visible: true, msg: t(`error_${error.response.data.error.error_code}`) }
                     });
                 }
             });
@@ -91,7 +97,7 @@ class Login extends React.Component {
                         </FormGroup>
                         <FormGroup color={this.state.password.state}>
                             <Label>{t('password')}</Label>
-                            <Input state={this.state.password.state} onChange={this.handlePasswordChange} size="lg" />
+                            <Input type="password" state={this.state.password.state} onChange={this.handlePasswordChange} size="lg" />
                             <FormFeedback className="small">{this.state.password.msg}</FormFeedback>
                         </FormGroup>
                         <Button color="info" size="lg" block>{t('login')}</Button>
@@ -105,4 +111,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(Login);
+export default Login;

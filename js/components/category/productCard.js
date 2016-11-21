@@ -7,10 +7,8 @@ import handleImage from '../handleImage';
 import { t } from '../../translator'
 
 class ProductCard extends React.Component {
-    
-    render() {
-        console.log(this.props);
 
+    render() {
         return (
             <div>
                 {this.props.products.map(product => (
@@ -42,7 +40,7 @@ class ProductCard extends React.Component {
                                         <span>{spec.value.true}</span>
                                         }
                                         {spec.value.default_values &&
-                                            <span>
+                                        <span>
                                                 {spec.value.default_values.map((value, i, arr) => {
                                                     let divider = i < arr.length - 1 &&
                                                         <span>, </span>;

@@ -11,7 +11,7 @@ class Header extends React.Component {
 
         this.handleLogout = this.handleLogout.bind(this);
         this.state = {
-            isLoggedIn: cookie.load('userName') ? true : false,
+            isLoggedIn: cookie.load('userToken') ? true : false
         };
     }
 

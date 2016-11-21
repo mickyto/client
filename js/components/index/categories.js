@@ -11,13 +11,13 @@ class Categories extends React.Component {
             <Col xs="2">
                 <ButtonGroup vertical>
                     {categories.map(category => (
-                        <Button outline color="primary" size="lg" key={category.categoryId} href={`/category/${category.categoryId}`}>
+                        <Button outline color="info" size="lg" key={category.categoryId} href={`/category/${category.categoryId}`}>
                             {category.name}
                         </Button>
                     ))}
                 </ButtonGroup>
                 <hr className="my-2" />
-                <Button color="info" href="/catalog" outline size="lg">{t('allCategories')}</Button>{' '}
+                <Button color="info" href="/catalog" size="lg">{t('allCategories')}</Button>{' '}
             </Col>
         );
     }

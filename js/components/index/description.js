@@ -11,7 +11,7 @@ const Description = () => {
                 <h1 className="display-3">{t('wikiCatalog')}</h1>
                 <p className="lead">{t('weCollect')}</p>
                 <hr className="my-2" />
-                <Button size="lg" color="primary">{t('addProduct')}</Button>
+                <Button size="lg" href="/profile/models" color="primary">{t('addProduct')}</Button>
             </Jumbotron>
         </Col>
     );

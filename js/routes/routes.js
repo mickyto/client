@@ -13,6 +13,9 @@ import NoMatch from '../components/noMatch/noMatch'
 import Login from '../components/gate/login';
 import Signup from '../components/gate/signup';
 import Profile from '../components/profile/profile';
+import NewProduct from '../components/models/newProduct';
+import NewSpecifications from '../components/models/newSpecifications';
+import Images from '../components/models/images';
 
 
 function prepareParams(params, { location }) {
@@ -33,6 +36,9 @@ export default (
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
         <Route path='/profile' component={Profile} />
-        <Route path="*" component={NoMatch}/>
+        <Route path='/profile/models' component={NewProduct} queries={Viewer} prepareParams={prepareParams} />
+        <Route path='/profile/models/:id/specifications' component={NewSpecifications} queries={Viewer} prepareParams={prepareParams} />
+        <Route path='/profile/models/:id/images' component={Images} queries={Viewer} prepareParams={prepareParams} />
+        <Route path='*' component={NoMatch}/>
     </Route>
 );

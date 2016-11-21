@@ -8,7 +8,6 @@
   background: #f7f7f9;
   padding: 20px;
 
-
   a {
     color: #798099;
 
@@ -18,28 +17,118 @@
   }
 }
 
-.login {
+.dropzone {
+  width: 380px;
+  height: 380px;
+  background: lightgray;
+  border: 2px dashed;
+  float: left;
 
-  margin-bottom: 20px;
-
-
-  .error {
-    background: palevioletred;
-    width: 100%;
-    color: white;
-    border-radius: 5px;
+  div[id=image] {
     text-align: center;
-    margin: 0 auto;
-    transition: all 0.3s linear;
+    height: 380px;
+
+    span {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+
+    img {
+      max-width: 350px;
+      max-height: 350px;
+      vertical-align: middle;
+    }
   }
+
+  div[id=msg] {
+    width: 180px;
+    margin: 40% auto;
+  }
+}
+
+.middle {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 380px;
+  text-align: center;
+
+  button {
+    margin: 10px;
+  }
+}
+
+.features{
+
+  th {
+    width: 30px;
+  }
+
+  p, textarea{
+    height: 38px;
+  }
+}
+
+.success{
+  color: green;
+  width: 30px;
+  height: 20px;
+  transition: all 0.6s linear;
+}
+
+.danger{
+  color: red;
+  width: 30px;
+  height: 20px;
+  transition: all 0.6s linear;
+}
+
+.period {
+  width: 100%;
+  margin-top: 10px;
+
+  td[id=button] {
+    width: 150px;
+    text-align: right;
+  }
+
+  td[id=input] {
+    width: 280px;
+    padding-left: 20px
+  }
+
+  td[id=label] {
+    text-align: right;
+  }
+
+  label {
+    margin: 0px;
+    padding-right: 20px
+  }
+
+  input[type=radio],
+  input[type=checkbox] {
+    width: auto !important;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+
+  input {
+    width: 50px !important;
+    text-align: right;
+  }
+}
+
+.login {
+  margin-bottom: 20px;
 
   button {
     margin: 35px 0px 5px 0px;
   }
-
 }
-
-
 
 .mobIcon {
   width: 60px;
@@ -51,7 +140,6 @@
     color: darkslategray;
   }
 }
-
 
 .img {
   text-align: center;
@@ -90,8 +178,6 @@
     line-height: 15px
   }
 }
-
-
 
 .main {
   justify-content: center !important;

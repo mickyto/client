@@ -3,13 +3,19 @@ import { Button, Col, Container, FormGroup, Form, Input,
     FormFeedback, NavLink, Label, Alert } from 'reactstrap';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import { withRouter } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import Style from '../main.scss';
 import config from '../../../config';
 import { t } from '../../translator'
 
 class Signup extends React.Component {
+
+    componentDidMount() {
+        if (cookie.load('userToken')) {
+            browserHistory.push('/profile');
+        }
+    }
 
     constructor(props) {
         super(props);
@@ -46,7 +52,7 @@ class Signup extends React.Component {
     handlePasswordChange(event) {
         this.setState({
             passwordValue: event.target.value,
-            password: event.target.value.length > 3 ? { state: 'success' } : ''
+            password: event.target.value.length > 7 ? { state: 'success' } : ''
         });
     }
 
@@ -64,6 +70,13 @@ class Signup extends React.Component {
             }
         }
 
+        if (this.state.password.length < 8) {
+            this.setState({
+                password: { state: 'danger', msg: t('passwordMustBe') }
+            });
+            return;
+        }
+
         const _this = this;
 
         axios.post(`${config.apiUrl}users`, {
@@ -72,15 +85,16 @@ class Signup extends React.Component {
                 password: this.state.passwordValue
             })
             .then(function (res) {
-                //cookie.save('userToken', res.data.token, { path: '/' });
+
+                cookie.save('userToken', res.data.token, { path: '/' });
                 cookie.save('userName', res.data.login, { path: '/' });
-                this.props.router.push('/profile');
+                browserHistory.push('/profile');
                 window.location.reload();
             })
             .catch(function (error) {
                 if (error.response.data.error) {
                     _this.setState({
-                        alert: { visible: true, msg: error.response.data.error.error_msg.split(') ').pop() }
+                        alert: { visible: true, msg: t(`error_${error.response.data.error.error_code}`) }
                     });
                 }
             });
@@ -103,12 +117,12 @@ class Signup extends React.Component {
                         </FormGroup>
                         <FormGroup color={this.state.email.state}>
                             <Label>Email</Label>
-                            <Input state={this.state.email.state} onChange={this.handleEmailChange} size="lg" />
+                            <Input type="email" state={this.state.email.state} onChange={this.handleEmailChange} size="lg" />
                             <FormFeedback className="small">{this.state.email.msg}</FormFeedback>
                         </FormGroup>
                         <FormGroup color={this.state.password.state}>
                             <Label>{t('password')}</Label>
-                            <Input state={this.state.password.state} onChange={this.handlePasswordChange} size="lg" />
+                            <Input type="password" state={this.state.password.state} onChange={this.handlePasswordChange} size="lg" />
                             <FormFeedback className="small">{this.state.password.msg}</FormFeedback>
                         </FormGroup>
                         <Button color="info" size="lg" block>{t('signup')}</Button>
@@ -122,4 +136,4 @@ class Signup extends React.Component {
     }
 };
 
-export default withRouter(Signup);
+export default Signup;

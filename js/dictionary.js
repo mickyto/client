@@ -1,6 +1,7 @@
 export const dictionary = {
     
     ru_RU: {
+        
         // header
         home: 'Главная',
         catalog: 'Каталог',
@@ -58,19 +59,35 @@ export const dictionary = {
 
         password: 'Пароль',
         loginOrEmail: 'Логин или email',
-        haveNoAccount: 'Уже есть аккаунт?',
+        haveNoAccount: 'Ещё нет аккаунта?',
         tooShort: 'Длина поля не верна',
         Login: 'Логин',
         haveAccount: 'Уже есть аккаунт?',
+        passwordMustBe: 'Пароль должен состоять минимум из 8-ми букв',
+        
+        // models
+
+        save: 'Сохранить',
+        delete: 'Удалить',
+        from: 'от',
+        to: 'до',
+        yes: 'да',
+        no: 'нет',
 
 
+        noMatch: 'К сожалению эта страница еще не создана. Возможно вы найдете другие страницы более полезными',
 
-        noMatch: 'К сожалению эта страница еще не создана. Возможно вы найдете другие страницы более полезными'
+        // API error messages
 
+        error_3: 'Пользователь не найден',
+        error_4: 'Невозможно авторизовать пользователя',
+        error_13: 'Email уже зарегистрирован',
+        error_14: 'Логин уже зарегистрирован'
         
     },
 
     en_EN: {
+        
         // header
         home: 'Home',
         catalog: 'Catalog',
@@ -132,11 +149,28 @@ export const dictionary = {
         tooShort: 'Length of field is invalid',
         Login: 'Login',
         haveAccount: 'Already have an account?',
+        passwordMustBe: 'Password must contain at least 8 letters',
+        
+        // models
+        
+        save: 'Save',
+        delete: 'Delete',
+        from: 'from',
+        to: 'to',
+        yes: 'yes',
+        no: 'no',
 
 
 
+        noMatch: 'Sorry, this page is not setup yet, you may find the other pages useful.',
 
-        noMatch: 'Sorry, this page is not setup yet, you may find the other pages useful.'
+        // API error messages
+
+        error_3: 'User not found',
+        error_4: 'Cannot authorize user',
+        error_13: 'Email already registered',
+        error_14: 'Login already taken'
+
 
 
     }

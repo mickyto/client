@@ -1,6 +1,6 @@
 import React from 'react';
 import cookie from 'react-cookie';
-import { withRouter } from 'react-router';
+import { browserHistory } from 'react-router';
 import { Jumbotron, Col } from 'reactstrap';
 
 import { t } from '../../translator'
@@ -8,9 +8,8 @@ import { t } from '../../translator'
 class Profile extends React.Component {
 
     componentDidMount() {
-        if (!cookie.load('userName')) {
-            this.props.router.push('/');
-            return;
+        if (!cookie.load('userToken')) {
+            browserHistory.push('/login');
         }
     }
 
@@ -28,4 +27,4 @@ class Profile extends React.Component {
     }
 }
 
-export default withRouter(Profile);
+export default Profile;

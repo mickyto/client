@@ -51,14 +51,19 @@ class Images extends React.Component {
                     </Col>
                     <Col xs="9" className={Style.martop}>
                         <Breadcrumb tag="nav">
-                            <BreadcrumbItem tag="span">Basic information</BreadcrumbItem>
-                            <BreadcrumbItem tag="span">Description and specifications</BreadcrumbItem>
-                            <BreadcrumbItem active tag="span">Images</BreadcrumbItem>
+                            <BreadcrumbItem>
+                                <a href={`/product/${product.productId}`}>
+                                    {`${product.vendor.name} ${product.model}`}
+                                </a>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem>
+                                <a href={`/profile/models/${product.productId}/specifications`}>
+                                    Description and specifications
+                                </a>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem>Images</BreadcrumbItem>
                         </Breadcrumb>
                         <hr className="my-2" />
-                        <a href={`/product/${product.productId}`}>
-                            <h1 className="display-5">{`${product.vendor.name} ${product.model}`}</h1>
-                        </a>
                         <h2><Tag>{product.category.name}</Tag></h2>
                         <p>SKUKIT ID: {product.productId}</p>
                         <Image image={product.front_image} isFront={'yes'} product={product.productId} relay={this.props.relay} />

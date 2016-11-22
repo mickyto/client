@@ -14,9 +14,10 @@ class filter extends React.Component {
 
     constructor(props) {
         super(props);
+        
         let vendors = [];
-        props.products.map(
-            product => {
+        props.products.map(product => {
+            
                 if (!this.inArray(vendors, product.node.vendor.name)) {
                     vendors.push(product.node.vendor.name);
                 }

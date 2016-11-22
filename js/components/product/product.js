@@ -50,10 +50,10 @@ class Product extends React.Component {
                             </Container>
                             <br />
                             <Col sm="6">
-                                <Specifications productSpecs={product} />
+                                <Specifications specs={product} />
                             </Col>
                             <Col sm="6">
-                                <Features />
+                                <Features features={product} />
                             </Col>
                         </Row>
                     </Col>
@@ -97,8 +97,12 @@ export default Relay.createContainer(Product, {
                     vendor {
                         name
                     }
+                    features {
+                        feature
+                    }
+                    ${Features.getFragment('features')}
                     ${Images.getFragment('images')}
-                    ${Specifications.getFragment('productSpecs')}
+                    ${Specifications.getFragment('specs')}
                 }
             }
         `

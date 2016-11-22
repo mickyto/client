@@ -1,27 +1,37 @@
 import React from 'react';
+import Relay from 'react-relay';
 
 import { t } from '../../translator'
 
-class features extends React.Component {
+class Features extends React.Component {
 
     render() {
         return (
             <div>
                 <h1 className="display-5">{t('features')}</h1>
                 <br />
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</p>
-                <br />
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</p>
-                <br />
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</p>
-                <br />
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</p>
+                {this.props.features.features.map(feature => (
+                    <div key={feature.__dataID__}>
+                        <p>{feature.feature}</p>
+                        <br />
+                    </div>
+                ))}
             </div>
         );
     }
 }
 
-export default features;
+export default Relay.createContainer(Features, {
+    fragments:  {
+        features: id => Relay.QL`
+            fragment on Product {
+                features {
+                    feature
+                }
+            }
+        `
+    }
+});
 
 
 

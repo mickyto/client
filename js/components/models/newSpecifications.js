@@ -28,30 +28,36 @@ class NewSpecifications extends React.Component {
                     <Col xs="3" className={Style.martop}>
                         <ButtonGroup vertical>
                             <Button outline color="info" size="lg" href="#">
-                                My account
+                                My stores
                             </Button>
                             <Button outline color="info" size="lg" href="#">
                                 My models
                             </Button>
                             <Button outline color="info" size="lg" href="#">
-                                My stores
+                                My account
                             </Button>
                         </ButtonGroup>
                     </Col>
                     <Col xs="9" className={Style.martop}>
                         <Breadcrumb tag="nav">
-                            <BreadcrumbItem tag="span">Basic information</BreadcrumbItem>
-                            <BreadcrumbItem active tag="span">Description and specifications</BreadcrumbItem>
-                            <BreadcrumbItem tag="span">Images</BreadcrumbItem>
+                            <BreadcrumbItem>
+                                <a href={`/product/${product.productId}`}>
+                                    {`${product.vendor.name} ${product.model}`}
+                                </a>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem>Description and specifications</BreadcrumbItem>
+                            <BreadcrumbItem>
+                                <a href={`/profile/models/${product.productId}/images`}>
+                                    Images
+                                </a>
+                            </BreadcrumbItem>
                         </Breadcrumb>
                         <hr className="my-2" />
-                        <a href={`/product/${product.productId}`}>
-                            <h1 className="display-5">{`${product.vendor.name} ${product.model}`}</h1>
-                        </a>
-                        <h2><Tag>{product.category.name}</Tag></h2>                        <p>SKUKIT ID: {product.productId}</p>
+                        <h2><Tag>{product.category.name}</Tag></h2>
+                        <p>SKUKIT ID: {product.productId}</p>
                         <Description product={product.productId} data={product.description} />
                         <hr className="my-2" />
-                        <SpecificationsForm productSpecs={product} />
+                        <SpecificationsForm specs={product} />
                         <hr className="my-2" />
                         <Features features={product} />
                         <div className="text-xs-center">
@@ -91,7 +97,7 @@ export default Relay.createContainer(NewSpecifications, {
                     vendor {
                         name
                     }
-                    ${SpecificationsForm.getFragment('productSpecs')}
+                    ${SpecificationsForm.getFragment('specs')}
                     ${Features.getFragment('features')}
                 }
             }

@@ -70,21 +70,21 @@ class NewProduct extends React.Component {
                     <Col xs="3" className={Style.martop}>
                         <ButtonGroup vertical>
                             <Button outline color="info" size="lg" href="#">
-                                My account
+                                My stores
                             </Button>
                             <Button outline color="info" size="lg" href="#">
                                 My models
                             </Button>
                             <Button outline color="info" size="lg" href="#">
-                                My stores
+                                My account
                             </Button>
                         </ButtonGroup>
                     </Col>
                     <Col xs="9" className={Style.martop}>
                         <Breadcrumb tag="nav">
-                            <BreadcrumbItem active tag="span">Basic information</BreadcrumbItem>
-                            <BreadcrumbItem tag="span">Description and specifications</BreadcrumbItem>
-                            <BreadcrumbItem tag="span">Images</BreadcrumbItem>
+                            <BreadcrumbItem tag="span">Basic information</BreadcrumbItem>
+                            <BreadcrumbItem active tag="span">Description and specifications</BreadcrumbItem>
+                            <BreadcrumbItem active tag="span">Images</BreadcrumbItem>
                         </Breadcrumb>
                         <hr className="my-2" />
                         <Alert color="danger" isOpen={this.state.alert.visible}>{this.state.alert.msg}</Alert>
@@ -112,7 +112,7 @@ class NewProduct extends React.Component {
                                 <Input name="model" onChange={(event) => this.handleValue(event,'model')} />
                             </FormGroup>
                             <FormGroup check>
-                                <Button>Next</Button>
+                                <Button>Save</Button>
                             </FormGroup>
                         </Form>
                     </Col>

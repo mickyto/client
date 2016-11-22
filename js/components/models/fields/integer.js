@@ -49,7 +49,7 @@ class Integer extends React.Component {
                 field: 'specifications',
                 data: {
                     value: this.state.value,
-                    id_unit: this.props.prop.unit.unitId,
+                    id_unit: this.props.prop.unit !== null ? this.props.prop.unit.unitId : '',
                     id_property: this.props.prop.propertyId
                 }
             })

@@ -32,13 +32,13 @@ class Period extends React.Component {
 
     handleFrom(event) {
         this.setState({
-            from: parseInt(event.target.value)
+            from: event.target.value
         });
     }
 
     handleTo(event) {
         this.setState({
-            to: parseInt(event.target.value)
+            to: event.target.value
         });
     }
 
@@ -58,8 +58,8 @@ class Period extends React.Component {
                 field: 'specifications',
                 data: {
                     value: {
-                        to: this.state.to,
-                        from: this.state.from
+                        to: parseFloat(this.state.to),
+                        from: parseFloat(this.state.from)
                     },
                     id_unit: this.props.prop.unit !== null ? this.props.prop.unit.unitId : '',
                     id_property: this.props.prop.propertyId

@@ -29,7 +29,7 @@ class Integer extends React.Component {
 
     handleChange(event) {
         this.setState({
-            value: parseInt(event.target.value)
+            value: event.target.value
         });
     }
 
@@ -48,7 +48,7 @@ class Integer extends React.Component {
                 element_id: this.props.product,
                 field: 'specifications',
                 data: {
-                    value: this.state.value,
+                    value: parseFloat(this.state.value),
                     id_unit: this.props.prop.unit !== null ? this.props.prop.unit.unitId : '',
                     id_property: this.props.prop.propertyId
                 }
